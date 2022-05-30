@@ -25,5 +25,27 @@ const arrayRecetas = [
       tiempo: 35,
       clave: ["berenjenas", "queso"],
     },
+    {
+      titulo:"",
+      ingredientes:"",
+      preparacion:"",
+      tiempo:"",
+      clave:"",
+    },
+    {
+      titulo:"",
+      ingredientes:"",
+      preparacion:"",
+      tiempo:"",
+      clave:"",
+    },
+    {
+      titulo:"",
+      ingredientes:"",
+      preparacion:"",
+      tiempo:"",
+      clave:"",
+    },
+
   ];
   
