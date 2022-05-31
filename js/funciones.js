@@ -19,22 +19,27 @@ function agregarReceta ( ) {
 }
 
 function buscarPalabraClave() {
-  let palabraElegida = prompt("Ingresa tu palabra clave").toUpperCase();
-
-  const arrayPalabrasClaves = arrayRecetas.filter((elemento) => {
-    let boolean = false;
-    let arr = [];
-    elemento.clave.forEach((el) => {
-      boolean = el.toUpperCase().indexOf(palabraElegida) != -1;
-      arr.push(boolean);
+  let palabraElegida = document.getElementById("palabraClave")
+  let boton= document.createElement("button")
+  let contenedorClave= document.getElementById("contenedorClave")
+  contenedorClave.appendChild(boton)
+  contenedorClave.style.display="block"
+  boton.addEventListener("click", ()=>{
+    const arrayPalabrasClaves = arrayRecetas.filter((elemento) => {
+      let boolean = false;
+      let arr = [];
+      elemento.clave.forEach((el) => {
+        boolean = el.toUpperCase().indexOf(palabraElegida.value.toUpperCase()) != -1;
+        arr.push(boolean);
+      });
+      if (arr.includes(true)) {
+        return true;
+      } else {
+        return false;
+      }
     });
-    if (arr.includes(true)) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  listarRecetas(arrayPalabrasClaves);
+    listarRecetas2(arrayPalabrasClaves);
+  })
 }
 
 function buscarPorNombre() {
@@ -52,3 +57,12 @@ function listarRecetas(arr) {
                 Tiempo = ${el.tiempo}`);
   });
 }
+
+function listarRecetas2(arr) {
+  arr.forEach((el) => {
+    const nombreReceta= document.createElement("h4")
+    nombreReceta.innerText=`Nombre de la receta: ${el.titulo}`
+    document.body.appendChild(nombreReceta)
+  });
+}
+

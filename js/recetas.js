@@ -26,26 +26,11 @@ const arrayRecetas = [
       clave: ["berenjenas", "queso"],
     },
     {
-      titulo:"",
-      ingredientes:"",
-      preparacion:"",
-      tiempo:"",
-      clave:"",
+      titulo:"Croquetas de arroz",
+      ingredientes:"Arroz (lo que quieras), queso (el que mas te guste), la verdura que le quieras poner (yo le puse espinaca, pero es opcional, queso regianito",
+      preparacion:"Hierve el arroz. Sipodes hacerlo pasado mejor. Lo colás y le agregas queso cremoso o muzzarella.",
+      tiempo:40,
+      clave:["arroz","queso"],
     },
-    {
-      titulo:"",
-      ingredientes:"",
-      preparacion:"",
-      tiempo:"",
-      clave:"",
-    },
-    {
-      titulo:"",
-      ingredientes:"",
-      preparacion:"",
-      tiempo:"",
-      clave:"",
-    },
-
   ];
   

@@ -1,25 +1,42 @@
+*{ 
+    padding: auto;
+    margin: auto;
+}
 body{
-    border:1px solid gray;
-    border-radius: 20px;
+    border:1px solid rgb(236, 129, 129);
+    border-radius: 35px;
     margin:2%;
     padding:2%;
+}
+h1{
+    color: brown;
+    font-size: 90px;
+}
+p{
+    color: brown;
+    text-align: center;
+    justify-content: center;
 }
 
 button{
     background-color: rgb(236, 129, 129);
-    width:200px;
+    width:150px;
     height: 50px;
     color:white;
     font-weight: bold;
-    margin-left: 2%;
     border-radius: 20px;
     border:0;
     cursor: pointer;
+    padding: 0.1rem;
+    margin: 0.5rem;
 }
 button:hover, button.active{
     color:rgb(236, 129, 129);
     background-color: white;
     border:1px solid rgb(236, 129, 129);
+}
+.noMostrar {
+    display: none;
 }
 
 table{
@@ -44,3 +61,4 @@ td{
     padding: 3%;
     padding-bottom:1%;
 }
+

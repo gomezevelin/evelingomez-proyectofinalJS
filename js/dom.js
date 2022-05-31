@@ -1,10 +1,6 @@
-    
-    document.body.style.background = '#A3E4D7 '
-    
     const tituloPrincipal = document.createElement("h1");
     tituloPrincipal.innerHTML="¿Que comemos hoy?";
 
-    tituloPrincipal.setAttribute("style","color:green;text-align:center; font-size: 160px");
     tituloPrincipal.classList.add("miTitulo");
     tituloPrincipal.classList.add("miTitulo2");
 
