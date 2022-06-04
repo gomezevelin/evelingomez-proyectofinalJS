@@ -12,7 +12,7 @@ const arrayRecetas = [
       titulo: "garbanzos con espinaca",
       ingredientes: "Garbanzos (400gr), espinaca (500gr), cebolla (1/2)",
       preparacion:
-        "En una cazuela ponemos un chorrito de aceite y lo vamos a calentar a fuego muy suave. esté caliente, añadimos los dientes de ajo bien picados. Dejamos que se cocinen aquí arededor de unos 2 minutos.A continuación, agregamos la cebolla también bien picada y salpimentamos. Removemos todos los ingredientes y dejamos que se cocine unos",
+        "En una cazuela ponemos un chorrito de aceite y lo vamos a calentar a fuego muy suave. esté caliente, añadimos los dientes de ajo bien picados. Dejamos que se cocinen aquí arededor de unos 2 minutos.A continuación, agregamos la cebolla también bien picada y salpimentamos. Removemos todos los ingredientes y dejamos que se cocine unos 10 min a fuego suave. Hecho esto, agregamos las espinacas. Subimos la potencia del fuego y removemos con frecuencia. Cuando la espinaca haya reducido su tamaño, añadimos una cucharadita de pimentón y una pizca de comino molido. Mezclamos todo brevemente y cuando los garbanzos ya estén cocidos, los agregamos junto con el agua de la cocción a esta elaboración. Mezclamos nuevamente, rectificamos de sal, tapamos y dejamos que se cocine unos 20 minutos. Servimos",
       tiempo: 20,
       clave: ["garbanzos", "espinaca"],
     },
@@ -28,9 +28,24 @@ const arrayRecetas = [
     {
       titulo:"Croquetas de arroz",
       ingredientes:"Arroz (lo que quieras), queso (el que mas te guste), la verdura que le quieras poner (yo le puse espinaca, pero es opcional, queso regianito",
-      preparacion:"Hierve el arroz. Sipodes hacerlo pasado mejor. Lo colás y le agregas queso cremoso o muzzarella.",
+      preparacion:"Hierve el arroz. Si podes hacerlo pasado mejor. Lo colás y le agregas queso cremoso o muzzarella mientras este caliente. Aparte rahogas cebollita cn aceite de oliva y la mezclas con el arroz y el queso. Podes agregarle lo que mas te guste. Yo probé con espinaca y choclo. Condimentas a gusto. Le agregue también semillas tostadas, todo a gusto. Armas bolitas o croquetas, lo que prefieras y las pasas por pan rallado. Al horno hasta que se doren y estan listas. También se puede frizar",
       tiempo:40,
       clave:["arroz","queso"],
     },
+    {
+      titulo:"Hummus de garbanzo",
+      ingredientes:"Garbanzos, limón, aceite, tahini opcional",
+      preparacion:"Yo suelo utilizar media lata de garbanzos pero es según la cantidad que quieras. Yo uso una taza grande tipo sopera y ahi pongo la media lata de garbanzos, medio diente de ajo, 2 dedos de aceite (el que mas te guste), un chorro de jugo de limón y aveces le agrego un chorrito de agua.Aquí podria incluirseel tahini, yo no le pongo. Luego mixear hasta que quede una pasta cremosa y refrigerar por lo menos 15 minutos. ",
+      tiempo:10,
+      clave:["garbanzo","limon"],
+    },
+    {
+      titulo:"Milanesa de tofu",
+      ingredientes:"tofu, pan rallado, huevo",
+      preparacion:"Cortas el tofu en fetas finas y lo pones en huevo. Yo al huevo le agrego saborizante de gallina, ajo en polvo, albahaca, sal, pimienta. Pero todo es opcional y reemplazable. Las dejas un rato en huevo y luego las empanas. Yo compro pan rallado semillas que le da un toque. Al horno hasta que se doren. Acompañar con lo que prefieras",
+      tiempo:10,
+      clave:["tofu","pan rallado"],
+    },
+    
   ];
   
