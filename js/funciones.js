@@ -102,10 +102,12 @@ function listarRecetas(arr) {
 function listarRecetas2(arr) {
   arr.forEach((el) => {
     const nombreReceta = document.getElementById("miContenido");
-    nombreReceta.innerHTML = ` <div class="card">
+    let divReceta = document.createElement("div")
+    divReceta.innerHTML = ` 
+    <div class="card" id="cardReceta">
       <div class="card-body">
-          <h5 class="card-title">${el.titulo.toUpperCase()}</h5>
-          <p class="card-text">${el.preparacion}</p>
+          <h5 class="card-title" id="tituloReceta">${el.titulo.toUpperCase()}</h5>
+          <p class="card-text pReceta">${el.preparacion}</p>
           <p class="card-text"><small class="text-muted">Tiempo estimado: ${
             el.tiempo
           } minutos.</small></p>
@@ -114,10 +116,10 @@ function listarRecetas2(arr) {
           }</small></p>
       </div>
     </div>`;
-    document.appendChild(nombreReceta);
+    nombreReceta.appendChild(divReceta);
   });
 }
-//noseque pasa que solo me busca espinaca.
+
 
 function formularioAgregarReceta() {
   const contenedorReceta = document.getElementById("miContenido");
