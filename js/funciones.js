@@ -6,7 +6,8 @@ function Receta(clave, ingredientes, preparacion, tiempoDemora) {
 }
 
 function agregarReceta() {
-  let recetaNueva = prompt("Cuantas palabras desea agregar?");
+  let tituloRecetaNueva = document.getElementById("tituloReceta");
+  localStorage.setItem(`tituloReceta`,tituloRecetaNueva.value)
   let arr = [];
   for (let i = 0; i < recetaNueva; i++) {
     let palabra = prompt("Ingrese su palabra");

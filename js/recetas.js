@@ -46,6 +46,19 @@ const arrayRecetas = [
       tiempo:10,
       clave:["tofu","pan rallado"],
     },
-    
+    {
+      titulo:"Tarta de fruta",
+      ingredientes:"1 manzana (funciona con pera y con kiwi también), 10 cucharadas de avena, 7 de jugo de naranja, ralladura de esa naranja, esencia de vainilla, 2 cucharadas de aceite, 1 cucharada de polvo para honear, 1 huevo, stevia ",
+      preparacion:"Colocamos las 10 cucharadas de avena en un bowl y el polvo para hornear, mezclamos. Luego le agregamos el huevo, el jugo de naranja, la esencia de vainilla, la ralladura, stevia (o lo que prefieras para endulzar), el aceite y revolvemos hasta integrar. Reservamos. Cortamos las manzanas en filas láminas. Colocamos un sartén al fuego bajo con un chorrito de aceite. Una vez caliente le ponemos algo de azucar y cubrimos toda la base con manzanas. Arriba le tiramos la mezcla que teníamos reservada. Dejamos cocinar tapado durante 5/10 minutos más. Cuando este cocida la masa sin partes líquidas es que ya está lista para dar vuelta. Cocinar 10 minutos mas. Servir",
+      tiempo:30,
+      clave:["avena","huevo"],
+    },
+    {
+      titulo:"Torta de manzana",
+      ingredientes:"1 manzana (funciona con pera y con kiwi también), 10 cucharadas de avena, 7 de jugo de naranja, ralladura de esa naranja, esencia de vainilla, 2 cucharadas de aceite, 1 cucharada de polvo para honear, 1 huevo, stevia ",
+      preparacion:"Colocamos las 10 cucharadas de avena en un bowl y el polvo para hornear, mezclamos. Luego le agregamos el huevo, el jugo de naranja, la esencia de vainilla, la ralladura, stevia (o lo que prefieras para endulzar), el aceite y revolvemos hasta integrar. Reservamos. Cortamos las manzanas en filas láminas. Colocamos un sartén al fuego bajo con un chorritode aceite. Una vez caliente le ponemos algo de azucar y cubrimos toda la base con manzanas. Arriba le tiramos la mezcla que teníamos reservada. Dejamos cocinar tapado durante 5/10 minutos más. Cuando este cocida la masa sin partes líquidas es que ya está lista para dar vuelta. Cocinar 10 minutos mas. Servir",
+      tiempo:30,
+      clave:["avena","huevo"],
+    },
   ];
   
