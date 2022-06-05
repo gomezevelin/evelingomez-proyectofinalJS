@@ -1,5 +1,6 @@
 
-#miNav{background-color: rgb(236, 129, 129);}
+#miNav{background-color: rgb(236, 129, 129);
+}
 #tituloPrincipal{
     font-size: 90px;
     margin-top: 5rem;
@@ -82,4 +83,28 @@
 }
 .pReceta{
     font-size: medium;
+}
+
+#divNav{
+    display: flex;
+    justify-content: flex-end;
+}
+#botonRegistrarse{
+    background-color: rgb(236, 129, 129);
+    width:85%;
+    height: 100%;
+    color:white;
+    font-weight: 600;
+    font-size: 0.7rem;
+    border-radius: 10px;
+    border:solid 1px white;
+    cursor: pointer;
+    padding: 0.1rem;
+    margin: 0.2rem;
+}
+
+#botonRegistrarse:hover, .botonRegistrarse.active{
+    color:rgb(236, 129, 129);
+    background-color: white;
+    border:1px solid rgb(236, 129, 129);
 }

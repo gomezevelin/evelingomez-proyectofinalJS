@@ -42,3 +42,6 @@ const VerTodasRecetas = document.getElementById("botonVerTodas");
 VerTodasRecetas.addEventListener("click", () => {
   listarRecetas2(arrayRecetas);
 });
+
+const login = document.getElementById("botonRegistrase");
+login.addEventListener("click", ()=>{botonRegistro()})
