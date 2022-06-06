@@ -79,7 +79,6 @@
 
 #tituloReceta{
     color:brown;
-    margin: 0.8rem;
 }
 .pReceta{
     font-size: medium;
@@ -107,4 +106,15 @@
     color:rgb(236, 129, 129);
     background-color: white;
     border:1px solid rgb(236, 129, 129);
+}
+
+#agregarPalabra{
+    margin-bottom: 1rem;
+}
+
+#cajaPalabraClave{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
 }
