@@ -1,6 +1,10 @@
 
 #miNav{background-color: rgb(236, 129, 129);
 }
+#spanNav{
+    color: whitesmoke;
+    margin-left: 1rem;
+}
 #tituloPrincipal{
     font-size: 90px;
     margin-top: 5rem;
@@ -117,4 +121,46 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 0.5rem;
+}
+
+.botonAgregarFavoritos{
+    border: 0% solid;
+    border-color: brown;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.7rem;
+    margin-right: 0%;
+    background-color: brown;
+    color: whitesmoke;
+}
+.formRegistro{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+}
+.botonEnviarRegistro{
+    background-color: whitesmoke;
+    width: 40%;
+    border: solid rgb(236, 129, 129) 2px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+
+@media (max-width: 768px) {
+    #tituloPrincipal{
+        font-size: 75px;
+    }
+
+}
+
+@media (max-width: 460px) {
+    #myNav{
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    #tituloPrincipal{
+        font-size: 40px;
+    }
 }
