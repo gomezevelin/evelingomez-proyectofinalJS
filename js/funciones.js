@@ -6,17 +6,22 @@ function Receta(clave, ingredientes, preparacion, tiempoDemora) {
 }
 
 function agregarReceta() {
-  let tituloRecetaNueva = document.getElementById("tituloReceta");
-  localStorage.setItem(`tituloReceta`,tituloRecetaNueva.value)
-  let arr = [];
-  for (let i = 0; i < recetaNueva; i++) {
-    let palabra = prompt("Ingrese su palabra");
-    arr.push(palabra);
-  }
-  let ingredientes = prompt("Ingrese los ingredientes");
-  let preparacion = prompt("Ingrese la preparacion");
-  let tiempo = prompt("Ingrese el tiempo");
-  arrayRecetas.push(new Receta(arr, ingredientes, preparacion, tiempo));
+  let tituloRecetaNueva = document.getElementById("tituloReceta").value;
+  let preparacionReceta = document.getElementById("preparacionReceta").value;
+  let ingredientes=document.getElementById("ingredientes").value;
+  let tiempo=document.getElementById("tiempoDuracion")
+  let palabrasClaves= agregarPalabraClave();
+  arrayRecetas.push(new Receta(palabrasClaves, ingredientes, preparacionReceta, tiempo));
+  localStorage.setItem("receta", JSON.stringify (arrayRecetas))
+}
+
+function agregarPalabraClave () {
+    let palabraClave = document.querySelectorAll(".palabrasClaves");
+    let arr=[];
+    palabraClave.forEach(elemento=>{
+      arr.push(elemento.value)
+    })
+    return arr
 }
 
 /*
@@ -74,29 +79,13 @@ function buscarPorNombre() {
   contenedorClave.style.display = "block";
   boton.addEventListener("click", () => {
     const arrayRecetasTitulo = arrayRecetas.filter((elemento) => {
-      let boolean = false;
-      let arr = [];
-      elemento.clave.forEach((el) => {
-        boolean =
-          el.toUpperCase().indexOf(tituloElegido.value.toUpperCase()) != -1;
-        arr.push(boolean);
-      });
-      if (arr.includes(true)) {
-        return true;
-      } else {
-        return false;
-      }
+      return elemento.titulo.toUpperCase().indexOf(tituloElegido.value.toUpperCase()) != -1;
     });
     listarRecetas2(arrayRecetasTitulo);
+    tituloElegido.style.display="none"
+    boton.style.display="none"
   });
-}
-
-function listarRecetas(arr) {
-  arr.forEach((el) => {
-    alert(`Nombre de la receta = ${el.titulo} 
-                Ingredientes= ${el.ingredientes}
-                Tiempo = ${el.tiempo}`);
-  });
+  
 }
 
 function listarRecetas2(arr) {
@@ -114,12 +103,23 @@ function listarRecetas2(arr) {
           <p class="card-text"><small class="text-muted">Ingredientes: ${
             el.ingredientes
           }</small></p>
+          <button class="botonAgregarFavoritos">Añadir a favoritos</button>
       </div>
     </div>`;
     nombreReceta.appendChild(divReceta);
   });
 }
 
+let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
+botonesFavoritos.forEach(elemento =>{
+    elemento.addEventListener("click", agregarFavoritos)
+});
+
+recetasFavoritas = [];
+
+function agregarFavoritos (e){
+    console.log(e)
+};
 
 function formularioAgregarReceta() {
   const contenedorReceta = document.getElementById("miContenido");
@@ -141,16 +141,30 @@ function formularioAgregarReceta() {
       <label for="preparacionReceta" class="form-label">Ingrese la preparación:</label>
       <textarea class="form-control" id="preparacionReceta" rows="3"></textarea>
     </div>
-    <div class="mb-3">
+    <div class="mb-3" id="cajaPalabraClave">
       <label for="palabrasClaves" class="form-label">Palabras Claves: </label>
-      <input type="text" class="form-control" id="palabrasClaves" placeholder="Ingrese los ingredientes que no pueden faltar" required autofocus>
-    </div>
+      <button id="agregarPalabra">Agregar otra Palabra</button>
+      <input type="text" class="form-control palabrasClaves" placeholder="Ingrese los ingredientes que no pueden faltar" required autofocus>
+      </div>
     <div class="cajaBotonesFormulario">
-      <button class="botonFormulario">Agregar</button>
-      <button class="botonFormulario">Limpiar</button>
+      <button id="botonFormularioAgregar">Agregar</button>
+      <button id="botonFormularioLimpiar">Limpiar</button>
     </div>
     </div>`;
+    document.getElementById("botonFormularioAgregar").addEventListener ("click", agregarReceta)
+    document.getElementById("agregarPalabra").addEventListener("click", ()=>{
+      agregarPalabra()
+    })
 }
+
+function agregarPalabra() {
+    let cajaPalabraClave = document.getElementById("cajaPalabraClave");
+    cajaPalabraClave.innerHTML+= `<input type="text" class="form-control palabrasClaves"  placeholder="Ingrese los ingredientes que no pueden faltar">`
+    document.getElementById("agregarPalabra").addEventListener("click", ()=>{
+      agregarPalabra()
+    })
+}
+
 //chequear el required y el autofocus
 
 function botonRegistro (){
@@ -239,6 +253,7 @@ function botonRegistro (){
 </div>`
   cajaRegistro.appendChild(divRegistro)
 }
+
 
 
 
