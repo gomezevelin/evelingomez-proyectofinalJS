@@ -1,4 +1,4 @@
-const arrayRecetas = [
+let arrayRecetas = [
     {
       titulo: "Pastel de papa",
       ingredientes:

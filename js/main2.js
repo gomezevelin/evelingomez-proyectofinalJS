@@ -15,8 +15,10 @@ botonAgregarReceta.addEventListener("click", () => {
 
 const VerTodasRecetas = document.getElementById("botonVerTodas");
 VerTodasRecetas.addEventListener("click", () => {
+  verificarLocalStorage();
   listarRecetas2(arrayRecetas);
 });
 
-//const login = document.getElementById("botonRegistrarse");
-//login.addEventListener("click",()=> {botonRegistro()});
+const login = document.getElementById("botonRegistrarse");
+login.addEventListener("click",()=> {botonRegistro()});
+

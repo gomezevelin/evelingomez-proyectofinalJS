@@ -53,8 +53,9 @@ function ocultar(elemento){
 }
 
 function listarRecetas2(arr) {
+  const nombreReceta = document.getElementById("miContenido");
+  nombreReceta.innerHTML=``
   arr.forEach((el) => {
-    const nombreReceta = document.getElementById("miContenido");
     let divReceta = document.createElement("div")
     divReceta.innerHTML = ` 
     <div class="card" id="cardReceta">
@@ -127,6 +128,8 @@ function agregarReceta() {
   let palabrasClaves= agregarPalabraClave();
   arrayRecetas.push(new Receta(tituloRecetaNueva, ingredientes, preparacionReceta, tiempo, palabrasClaves));
   localStorage.setItem("receta", JSON.stringify (arrayRecetas))
+  verificarLocalStorage()
+  listarRecetas2(arrayRecetas)
 }
 
 function agregarPalabraClave () {
@@ -138,74 +141,87 @@ function agregarPalabraClave () {
   return arr
 }
 
+function verificarLocalStorage(){
+  if (localStorage.getItem("receta")){
+    arrayRecetas=JSON.parse(localStorage.getItem("receta"))}
+}
 
-/*
 function botonRegistro (){
   let divRegistro = document.createElement("div")
   divRegistro.innerHTML= ` 
-  <div class="contenedor-formularios">
-    <ul class="contenedor-tabs">
-      <li class="tab tab-segunda active"><a href="#iniciar-sesion">Iniciar Sesión</a></li>
-      <li class="tab tab-primera"><a href="#registrarse">Registrarse</a></li>
-    </ul>
+  <button id="botonInicioSesion">Inicia Sesión</button>
+  <button id="botonUsuarioNuevo">Registrese</button>`
+  document.getElementById("cajaRegistro").appendChild(divRegistro)
+  document.getElementById("botonUsuarioNuevo").addEventListener("click",()=>{nuevoIngreso()})
+  document.getElementById("botonInicioSesion").addEventListener("click",()=>{inicioSesion()})
+}
 
- 
-    <div class="contenido-tab">
-      <div id="iniciar-sesion">
-        <h1>Iniciar Sesión</h1>
-        <form action="#" method="post" class="formRegistro">
-            <div class="contenedor-input">
-              <label>Usuario <span class="req">*</span></label>
-              <input type="text" required>
-            </div>
-            <div class="contenedor-input">
-              <label> Contraseña <span class="req">*</span></label>
-              <input type="password" required>
-            </div>
-            <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
-            <input type="submit" class="button button-block botonEnviarRegistro" value="Iniciar Sesión">
-        </form>
-      </div>
+function nuevoIngreso(){
+  document.getElementById("cajaRegistro").innerHTML=""
+  let divNuevoIngreso = document.createElement("div");
+  divNuevoIngreso.innerHTML=`
+<div id="registrarse" class="animate__animated animate__slideInLeft">
+  <h1>Registrarse</h1>
+  <form action="#" method="post" class="formRegistro">
+    <div class="contenedor-input">
+      <label> Nombre <span class="req">*</span></label>
+      <input type="text" required >
+    </div>
 
-      <div id="registrarse">
-        <h1>Registrarse</h1>
-        <form action="#" method="post" class="formRegistro">
-          <div class="contenedor-input">
-            <label> Nombre <span class="req">*</span></label>
-            <input type="text" required >
-          </div>
+    <div class="contenedor-input">
+      <label> Apellido <span class="req">*</span></label>
+      <input type="text" required>
+    </div>
+    
+    <div class="contenedor-input">
+      <label>Usuario <span class="req">*</span></label>
+      <input type="text" required>
+    </div>
+    <div class="contenedor-input">
+      <label> Email <span class="req">*</span></label>
+      <input type="email" required> 
+    </div>
+    <div class="contenedor-input">
+      <label> Contraseña <span class="req">*</span></label>
+      <input type="password" required>
+    </div>
+    <div class="contenedor-input">
+      <label> Repetir Contraseña <span class="req">*</span></label>
+      <input type="password" required>
+    </div>
+    <input type="submit" class="button button-block botonEnviarRegistro" value="Registrarse">
+  </form>
+</div>`
+document.getElementById("cajaRegistro").appendChild(divNuevoIngreso)
+}
 
-          <div class="contenedor-input">
-            <label> Apellido <span class="req">*</span></label>
-            <input type="text" required>
-          </div>
-          
+function inicioSesion(){
+  let divInicioSesion = document.createElement("div");
+  divInicioSesion.innerHTML=`
+<div class="contenedor-formularios">
+  <div class="contenido-tab">
+    <div id="iniciar-sesion">
+      <h1>Iniciar Sesión</h1>
+      <form action="#" method="post" class="formRegistro">
           <div class="contenedor-input">
             <label>Usuario <span class="req">*</span></label>
             <input type="text" required>
           </div>
           <div class="contenedor-input">
-            <label> Email <span class="req">*</span></label>
-            <input type="email" required> 
-          </div>
-          <div class="contenedor-input">
             <label> Contraseña <span class="req">*</span></label>
             <input type="password" required>
           </div>
-          <div class="contenedor-input">
-            <label> Repetir Contraseña <span class="req">*</span></label>
-            <input type="password" required>
-          </div>
-          <input type="submit" class="button button-block botonEnviarRegistro" value="Registrarse">
-        </form>
-      </div>
+          <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
+          <input type="submit" class="button button-block botonEnviarRegistro" value="Iniciar Sesión">
+      </form>
     </div>
-  </div>`
-  document.getElementById("cajaRegistro").appendChild(divRegistro)
+  </div>
+</div>`
+document.getElementById("cajaRegistro").appendChild(divInicioSesion)
 }
+  
 
-
-
+/* En proceso------>
 let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
 botonesFavoritos.forEach(elemento =>{
     elemento.addEventListener("click", agregarFavoritos)
@@ -215,4 +231,4 @@ recetasFavoritas = [];
 
 function agregarFavoritos (e){
     console.log(e)
-};*/
+  };*/
