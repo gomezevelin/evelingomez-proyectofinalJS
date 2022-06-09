@@ -145,6 +145,13 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
 }
+.contenedor-input{
+    background-color: whitesmoke;
+    width: 80%;
+}
+.imputFormRegistro{
+    border:0px;
+}
 
 
 @media (max-width: 768px) {

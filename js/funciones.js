@@ -20,12 +20,12 @@ function buscarPalabraClave() {
         boolean =
           el.toUpperCase().indexOf(palabraElegida.value.toUpperCase()) != -1;
         arr.push(boolean);
-      });
-      if (arr.includes(true)) {
+      });if (arr.includes(true)) {
         return true;
       } else {
         return false;
       }
+      
     });
     listarRecetas2(arrayPalabrasClaves);
     ocultar(palabraElegida)
@@ -40,12 +40,13 @@ function buscarPorNombre() {
   let contenedorClave = document.getElementById("contenedorClave");
   contenedorClave.style.display = "block";
   boton.addEventListener("click", () => {
+    ocultar(tituloElegido)
+    ocultar(boton)
     const arrayRecetasTitulo = arrayRecetas.filter((elemento) => {
       return elemento.titulo.toUpperCase().indexOf(tituloElegido.value.toUpperCase()) != -1;
     });
     listarRecetas2(arrayRecetasTitulo);
-    ocultar(tituloElegido)
-    ocultar(boton)
+    
   }); 
 }
 function ocultar(elemento){
@@ -147,6 +148,7 @@ function verificarLocalStorage(){
 }
 
 function botonRegistro (){
+  document.getElementById("cajaRegistro").innerHTML=``
   let divRegistro = document.createElement("div")
   divRegistro.innerHTML= ` 
   <button id="botonInicioSesion">Inicia Sesión</button>
@@ -157,45 +159,49 @@ function botonRegistro (){
 }
 
 function nuevoIngreso(){
-  document.getElementById("cajaRegistro").innerHTML=""
+  document.getElementById("cajaRegistro").innerHTML=``
   let divNuevoIngreso = document.createElement("div");
+  if (divNuevoIngreso!=``){
+    divNuevoIngreso.innerHTML=``
+  }
   divNuevoIngreso.innerHTML=`
-<div id="registrarse" class="animate__animated animate__slideInLeft">
+<div id="registrarse" >
   <h1>Registrarse</h1>
   <form action="#" method="post" class="formRegistro">
     <div class="contenedor-input">
       <label> Nombre <span class="req">*</span></label>
-      <input type="text" required >
+      <input class="imputFormRegistro" type="text" required >
     </div>
 
     <div class="contenedor-input">
       <label> Apellido <span class="req">*</span></label>
-      <input type="text" required>
+      <input class="imputFormRegistro" type="text" required>
     </div>
     
     <div class="contenedor-input">
       <label>Usuario <span class="req">*</span></label>
-      <input type="text" required>
+      <input class="imputFormRegistro" type="text" required>
     </div>
     <div class="contenedor-input">
       <label> Email <span class="req">*</span></label>
-      <input type="email" required> 
+      <input class="imputFormRegistro" type="email" required> 
     </div>
     <div class="contenedor-input">
       <label> Contraseña <span class="req">*</span></label>
-      <input type="password" required>
+      <input class="imputFormRegistro" type="password" required>
     </div>
     <div class="contenedor-input">
       <label> Repetir Contraseña <span class="req">*</span></label>
-      <input type="password" required>
+      <input class="imputFormRegistro" type="password" required>
     </div>
-    <input type="submit" class="button button-block botonEnviarRegistro" value="Registrarse">
+    <input  type="submit" class="button button-block botonEnviarRegistro" value="Registrarse">
   </form>
 </div>`
 document.getElementById("cajaRegistro").appendChild(divNuevoIngreso)
 }
 
 function inicioSesion(){
+  document.getElementById("cajaRegistro").innerHTML=``
   let divInicioSesion = document.createElement("div");
   divInicioSesion.innerHTML=`
 <div class="contenedor-formularios">
@@ -205,11 +211,11 @@ function inicioSesion(){
       <form action="#" method="post" class="formRegistro">
           <div class="contenedor-input">
             <label>Usuario <span class="req">*</span></label>
-            <input type="text" required>
+            <input class="imputFormRegistro" type="text" required>
           </div>
           <div class="contenedor-input">
             <label> Contraseña <span class="req">*</span></label>
-            <input type="password" required>
+            <input class="imputFormRegistro" type="password" required>
           </div>
           <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
           <input type="submit" class="button button-block botonEnviarRegistro" value="Iniciar Sesión">
@@ -219,7 +225,7 @@ function inicioSesion(){
 </div>`
 document.getElementById("cajaRegistro").appendChild(divInicioSesion)
 }
-  
+
 
 /* En proceso------>
 let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
@@ -232,3 +238,6 @@ recetasFavoritas = [];
 function agregarFavoritos (e){
     console.log(e)
   };*/
+
+
+ 

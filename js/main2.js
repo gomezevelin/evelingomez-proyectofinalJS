@@ -21,4 +21,3 @@ VerTodasRecetas.addEventListener("click", () => {
 
 const login = document.getElementById("botonRegistrarse");
 login.addEventListener("click",()=> {botonRegistro()});
-
