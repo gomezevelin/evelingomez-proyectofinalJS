@@ -5,6 +5,12 @@ function Receta(titulo, ingredientes, preparacion, tiempoDemora,clave) {
     this.tiempoDemora = tiempoDemora;
     this.clave = clave;
 }
+function Usuario(nom,apell,email,pass){
+  this.nom=nom;
+  this.apell=apell;
+  this.email=email;
+  this.pass=pass;
+}
 
 function buscarPalabraClave() {
   let palabraElegida = document.getElementById("palabraClave");
@@ -20,12 +26,8 @@ function buscarPalabraClave() {
         boolean =
           el.toUpperCase().indexOf(palabraElegida.value.toUpperCase()) != -1;
         arr.push(boolean);
-      });if (arr.includes(true)) {
-        return true;
-      } else {
-        return false;
-      }
-      
+      });
+      return arr.includes(true)?true:false;  
     });
     listarRecetas2(arrayPalabrasClaves);
     ocultar(palabraElegida)
@@ -45,37 +47,30 @@ function buscarPorNombre() {
     const arrayRecetasTitulo = arrayRecetas.filter((elemento) => {
       return elemento.titulo.toUpperCase().indexOf(tituloElegido.value.toUpperCase()) != -1;
     });
-    listarRecetas2(arrayRecetasTitulo);
-    
+    listarRecetas2(arrayRecetasTitulo); 
   }); 
 }
 function ocultar(elemento){
   elemento.style.display="none"
 }
-
 function listarRecetas2(arr) {
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML=``
-  arr.forEach((el) => {
+  arr.forEach(({titulo,preparacion,tiempo,ingredientes}) => {
     let divReceta = document.createElement("div")
     divReceta.innerHTML = ` 
     <div class="card" id="cardReceta">
       <div class="card-body">
-          <h5 class="card-title" id="tituloReceta">${el.titulo.toUpperCase()}</h5>
-          <p class="card-text pReceta">${el.preparacion}</p>
-          <p class="card-text"><small class="text-muted">Tiempo estimado: ${
-            el.tiempo
-          } minutos.</small></p>
-          <p class="card-text"><small class="text-muted">Ingredientes: ${
-            el.ingredientes
-          }</small></p>
+          <h5 class="card-title" id="tituloReceta">${titulo.toUpperCase()}</h5>
+          <p class="card-text pReceta">${preparacion}</p>
+          <p class="card-text"><small class="text-muted">Tiempo estimado: ${tiempo} minutos.</small></p>
+          <p class="card-text"><small class="text-muted">Ingredientes: ${ingredientes}</small></p>
           <button class="botonAgregarFavoritos">Añadir a favoritos</button>
       </div>
     </div>`;
     nombreReceta.appendChild(divReceta);
   });
 }
-
 function formularioAgregarReceta() {
   const contenedorReceta = document.getElementById("miContenido");
   contenedorReceta.innerHTML = `
@@ -112,7 +107,6 @@ function formularioAgregarReceta() {
     })
     document.getElementById("botonFormularioAgregar").addEventListener ("click", agregarReceta)
 }
-
 function agregarPalabra() {
     let cajaPalabraClave = document.getElementById("cajaPalabraClave");
     cajaPalabraClave.innerHTML+= `<input type="text" class="form-control palabrasClaves"  placeholder="Ingrese un ingrediente por renglón">`
@@ -120,7 +114,6 @@ function agregarPalabra() {
       agregarPalabra()
     })
 }
-
 function agregarReceta() {
   let tituloRecetaNueva = document.getElementById("tituloReceta").value.toUpperCase();
   let preparacionReceta = document.getElementById("preparacionReceta").value;
@@ -132,7 +125,6 @@ function agregarReceta() {
   verificarLocalStorage()
   listarRecetas2(arrayRecetas)
 }
-
 function agregarPalabraClave () {
   let palabraClave = document.querySelectorAll(".palabrasClaves");
   let arr=[];
@@ -141,12 +133,9 @@ function agregarPalabraClave () {
   })
   return arr
 }
-
 function verificarLocalStorage(){
-  if (localStorage.getItem("receta")){
-    arrayRecetas=JSON.parse(localStorage.getItem("receta"))}
+    arrayRecetas=JSON.parse(localStorage.getItem("receta")) || []
 }
-
 function botonRegistro (){
   document.getElementById("cajaRegistro").innerHTML=``
   let divRegistro = document.createElement("div")
@@ -157,13 +146,9 @@ function botonRegistro (){
   document.getElementById("botonUsuarioNuevo").addEventListener("click",()=>{nuevoIngreso()})
   document.getElementById("botonInicioSesion").addEventListener("click",()=>{inicioSesion()})
 }
-
 function nuevoIngreso(){
   document.getElementById("cajaRegistro").innerHTML=``
   let divNuevoIngreso = document.createElement("div");
-  if (divNuevoIngreso!=``){
-    divNuevoIngreso.innerHTML=``
-  }
   divNuevoIngreso.innerHTML=`
 <div id="registrarse" >
   <h1>Registrarse</h1>
@@ -199,7 +184,6 @@ function nuevoIngreso(){
 </div>`
 document.getElementById("cajaRegistro").appendChild(divNuevoIngreso)
 }
-
 function inicioSesion(){
   document.getElementById("cajaRegistro").innerHTML=``
   let divInicioSesion = document.createElement("div");
@@ -225,7 +209,6 @@ function inicioSesion(){
 </div>`
 document.getElementById("cajaRegistro").appendChild(divInicioSesion)
 }
-
 
 /* En proceso------>
 let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")

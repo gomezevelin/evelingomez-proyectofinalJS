@@ -139,18 +139,28 @@
 
 }
 .botonEnviarRegistro{
-    background-color: whitesmoke;
+    background-color: rgb(236, 129, 129);
     width: 40%;
     border: solid rgb(236, 129, 129) 2px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    color: whitesmoke;
+
     
 }
 .contenedor-input{
-    background-color: whitesmoke;
-    width: 80%;
+    text-align: left;
+    width: 100%;
+    color: brown;
+
 }
 .imputFormRegistro{
     border:0px;
+    background-color: rgb(252, 188, 188);
+    margin-right: -20px;
+
 }
 
 
