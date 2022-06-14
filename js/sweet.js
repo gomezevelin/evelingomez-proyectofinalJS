@@ -1,3 +1,5 @@
+//datosDeUsuario = localStorage.getItem("usuarios");
+
 
 function nuevoIngresoSweetAlert()
 {   
@@ -53,7 +55,6 @@ function nuevoIngresoSweetAlert()
 
 
 
-nuevoIngresoSweetAlert()
 /*
 const { value: formValues } = await Swal.fire({
     title: 'Multiple inputs',
@@ -84,3 +85,5 @@ const { value: formValues } = await Swal.fire({
             maxlength: 10,
             autocapitalize: 'off',
             autocorrect: 'off'},*/
+
+            

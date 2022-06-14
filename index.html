@@ -9,6 +9,7 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
 
     <title>Que comemos hoy? - Home</title>
 </head>
@@ -21,12 +22,70 @@
                 </div>
                 <div id="cajaRegistro">
                     <button id="botonRegistrarse">Iniciar Sesión / Registrarse</button>
+                    <a href="./favoritos.html">Recetas Favoritas</a>
+                    <a href="./carrito.html">Carrito</a>
+                    <a href="./tienda.html">Tienda</a>
                 </div>
+                
             </nav>
         </div>
     </header>
 
 <main>
+    <div>
+        <div id="divFormNuevoIngreso" class="noMostrar" >
+            <div id="cajaRegistrarse">
+                <h3 id="tituloRegistro">Ingrese sus datos para registrarse</h3>
+                <form action="#" method="post" class="formRegistro">
+                    <div class="contenedor-input">
+                        <label> Nombre <span class="req">*</span></label>
+                        <input id="inputNombre" class="imputFormRegistro" type="text" required >
+                    </div>
+              
+                    <div class="contenedor-input">
+                        <label> Apellido <span class="req">*</span></label>
+                        <input id="inputApellido" class="imputFormRegistro" type="text" required>
+                    </div>
+                  
+                    <div class="contenedor-input">
+                        <label> Email <span class="req">*</span></label>
+                        <input id="inputEmail" class="imputFormRegistro" type="email" required> 
+                    </div>
+                    <div class="contenedor-input">
+                        <label> Contraseña <span class="req">*</span></label>
+                        <input id="inputPass" class="imputFormRegistro" type="password" required>
+                    </div>
+                    <div class="contenedor-input">
+                        <label> Repetir Contraseña <span class="req">*</span></label>
+                        <input id="inputPassConfirm"  class="imputFormRegistro" type="password" required>
+                    </div>
+                        <input id="botonEnviarRegistro" type="submit" class="button button-block botonEnviarRegistro" value="Registrarse">
+                </form>
+            </div>
+            <div id="divFormInicioSesion"class="noMostrar">
+                <div id="cajaInicioSesion"  >
+                    <div class="contenido-tab">
+                        <div id="iniciar-sesion">
+                            <h1>Iniciar Sesión</h1>
+                            <form action="#" method="post" class="formRegistro">
+                                <div class="contenedor-input">
+                                    <label>Usuario <span class="req">*</span></label>
+                                    <input class="imputFormRegistro" type="text" required>
+                                </div>
+                                <div class="contenedor-input">
+                                    <label> Contraseña</label>
+                                    <input class="imputFormRegistro" type="password" required>
+                                </div>
+                                <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
+                                <input type="submit" class="button button-block botonEnviarRegistro" value="Iniciar Sesión">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
     <div class="container">
         <div class="row contenedorTitulo">
           <h1 class="animate__animated animate__slideInLeft" id="tituloPrincipal">¿Qué comemos hoy?</h1>
@@ -47,9 +106,9 @@
             <div class="col-6">
                 <button id="botonAgregarReceta" class="botonInicio animate__animated animate__zoomIn">Agregar receta</button>
             </div>
-            </div>
-            </div>
-            <button id="btnSweet">hola</button>
+        </div>
+    </div>
+    <button id="btnSweet">hola</button>
     <div class="container">
         <div class="row">
             <div class="noMostrar col-6" id="contenedorClave">
@@ -61,19 +120,24 @@
     <div class="container">
         <div class="row" id="miContenido"></div>
     </div>
+    
+    
     </main>
-
+    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/main2.js"></script>
-    <script src="./js/funciones.js"></script>
-    <script src="./js/recetas.js"></script>
+    
+   
+    
     <script src="./js/sweet.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity=
     "sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/recetas.js"></script>
+    <script src="./js/funciones.js"></script>
+    <script src="./js/main2.js"></script>
     
 </body>
 </html>

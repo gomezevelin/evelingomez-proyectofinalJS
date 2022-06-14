@@ -11,8 +11,29 @@ function Usuario(nom,apell,email,pass){
   this.email=email;
   this.pass=pass;
 }
+class Carrito{
+  constructor(titulo,preparacion,tiempoDemora,ingredientes){
+    this.titulo = titulo.toUpperCase();  
+    this.ingredientes = ingredientes;
+    this.preparacion = preparacion;
+    this.tiempoDemora = tiempoDemora;
+  }
+}
+
+class CarritoProductos{
+  constructor(nombre,precio,img,cant,id,subtotal){
+    this.nombre = nombre;
+    this.precio = precio;
+    this.img = img;
+    this.cant=1;
+    this.id = id;
+    this.subtotal=precio;
+  }
+}
 
 function buscarPalabraClave() {
+  const nombreReceta = document.getElementById("miContenido");
+  nombreReceta.innerHTML=``
   let palabraElegida = document.getElementById("palabraClave");
   let boton = document.getElementById("miBoton");
   boton.innerText = `Buscar`;
@@ -34,13 +55,15 @@ function buscarPalabraClave() {
     ocultar(boton)
   });
 }
-
 function buscarPorNombre() {
+  let contenedorClave = document.getElementById("contenedorClave");
+  contenedorClave.style.display = "block";
+  const nombreReceta = document.getElementById("miContenido");
+  nombreReceta.innerHTML=``
   let tituloElegido = document.getElementById("palabraClave");
   let boton = document.getElementById("miBoton");
   boton.innerText = `Buscar`;
-  let contenedorClave = document.getElementById("contenedorClave");
-  contenedorClave.style.display = "block";
+  
   boton.addEventListener("click", () => {
     ocultar(tituloElegido)
     ocultar(boton)
@@ -54,6 +77,8 @@ function ocultar(elemento){
   elemento.style.display="none"
 }
 function listarRecetas2(arr) {
+  let contenedorClave = document.getElementById("contenedorClave");
+  contenedorClave.style.display = "none";
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML=``
   arr.forEach(({titulo,preparacion,tiempo,ingredientes}) => {
@@ -69,9 +94,53 @@ function listarRecetas2(arr) {
       </div>
     </div>`;
     nombreReceta.appendChild(divReceta);
+  
   });
+  let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
+  botonesFavoritos.forEach(elemento =>{
+    elemento.addEventListener("click",()=>{ 
+      agregarFavoritos;
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Se agregó a Favoritos'
+      })
+    })
+});
 }
+
+let carrito = [];
+
+function agregarFavoritos (e){
+  let carritoLocalStorage= JSON.parse(localStorage.getItem("carrito"));
+  if (carritoLocalStorage){
+    carrito = carritoLocalStorage;
+  }
+  let tituloReceta= e.target.parentNode.children[0].textContent;
+  let preparacionReceta= e.target.parentNode.children[1].textContent;
+  let tiempoEstimado= e.target.parentNode.children[2].textContent;
+  let ingredientes=e.target.parentNode.children[3].textContent;
+  
+  let recetasFavoritas = new Carrito (tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
+  carrito.push(recetasFavoritas);
+  localStorage.setItem("carrito",JSON.stringify(carrito))
+  console.log(carrito)
+};
+
 function formularioAgregarReceta() {
+  let contenedorClave = document.getElementById("contenedorClave");
+  contenedorClave.style.display = "none";
   const contenedorReceta = document.getElementById("miContenido");
   contenedorReceta.innerHTML = `
   <form action="" id="formularioAgregarReceta">
@@ -115,6 +184,7 @@ function agregarPalabra() {
     })
 }
 function agregarReceta() {
+  
   let tituloRecetaNueva = document.getElementById("tituloReceta").value.toUpperCase();
   let preparacionReceta = document.getElementById("preparacionReceta").value;
   let ingredientes=document.getElementById("ingredientes").value;
@@ -143,9 +213,21 @@ function botonRegistro (){
   <button id="botonInicioSesion">Inicia Sesión</button>
   <button id="botonUsuarioNuevo">Registrese</button>`
   document.getElementById("cajaRegistro").appendChild(divRegistro)
-  document.getElementById("botonUsuarioNuevo").addEventListener("click",()=>{nuevoIngreso()})
-  document.getElementById("botonInicioSesion").addEventListener("click",()=>{inicioSesion()})
+  document.getElementById("botonUsuarioNuevo").addEventListener("click",()=>{formularioNuevoIngreso()})
+  document.getElementById("botonInicioSesion").addEventListener("click",()=>{formularioInicioSesion()})
 }
+
+/* En proceso------>
+let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
+botonesFavoritos.forEach(elemento =>{
+    elemento.addEventListener("click", agregarFavoritos)
+});
+
+recetasFavoritas = [];
+
+function agregarFavoritos (e){
+    console.log(e)
+  };
 function nuevoIngreso(){
   document.getElementById("cajaRegistro").innerHTML=``
   let divNuevoIngreso = document.createElement("div");
@@ -210,17 +292,97 @@ function inicioSesion(){
 document.getElementById("cajaRegistro").appendChild(divInicioSesion)
 }
 
-/* En proceso------>
+// favoritos modificado sin funcionar
 let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
-botonesFavoritos.forEach(elemento =>{
-    elemento.addEventListener("click", agregarFavoritos)
+  botonesFavoritos.forEach(elemento =>{
+    elemento.addEventListener("click",()=>{ 
+      agregarFavoritos;
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Se agregó a Favoritos'
+      })
+    })
 });
+}
 
-recetasFavoritas = [];
+let recetasFavoritas = [];
 
 function agregarFavoritos (e){
-    console.log(e)
-  };*/
+  let recetasFavoritasLocalStorage= JSON.parse(localStorage.getItem("favoritas"));
+  if (recetasFavoritasLocalStorage){
+    recetasFavoritas = recetasFavoritasLocalStorage;
+  }
+  let tituloReceta= e.target.parentNode.children[0].textContent;
+  let preparacionReceta= e.target.parentNode.children[1].textContent;
+  let tiempoEstimado= e.target.parentNode.children[2].textContent;
+  let ingredientes=e.target.parentNode.children[3].textContent;
+  
+  let recetaFavoritaNueva = new RecetaFavorita(tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
+  recetasFavoritas.push(recetaFavoritaNueva);
+  localStorage.setItem("favoritas",JSON.stringify(recetasFavoritas))
+  console.log(recetasFavoritas)
+};
+*/
+
+let arrayUsuarios = [];
+
+function formularioNuevoIngreso(){
+  cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
+  cajaRegistrarse.style.display="block";
+  document.getElementById("botonEnviarRegistro").addEventListener("click", ()=>{nuevoIngreso})
+}
+
+function nuevoIngreso() {
+  
+  let nombre = document.getElementById('inputNombre').value;
+  let apellido = document.getElementById('inputApellido').value;
+  let email= document.getElementById(`inputEmail`).value;
+  let pass= document.getElementById(`inputPass`).value;
+  let confirmPass= document.getElementById(`inputPassConfirm`).value;
+  //alert ha ingresado distintas contraseñas
+  pass === confirmPass ? Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Se ha registrado correctamente',
+    showConfirmButton: false,
+    timer: 1500
+  }): Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Las contraseñas no coinciden. Vuelva a intentarlo',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
+  localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
+  console.log(arrayUsuarios)
+}
 
 
- 
+function formularioInicioSesion(){
+  cajaInicioSesion = document.getElementById("divFormInicioSesion");
+  cajaInicioSesion.classList.remove("noMostrar");
+  document.getElementById("botonInicioSesion").addEventListener("click", ()=>{inicioSesion})
+}
+function inicioSesion(){
+  let email= document.getElementById(`inputEmail`).value;
+  let pass= document.getElementById(`inputPass`).value;
+  arrayUsuarios.filter((elemento) => {
+    return elemento.email.toUpperCase().indexOf(email.value.toUpperCase()) != -1;
+  });}
+
+
+
+
