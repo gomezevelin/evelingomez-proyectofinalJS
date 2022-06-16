@@ -65,10 +65,10 @@ function rellenarTienda (){
             </div>
         </div>`
         divProductos.appendChild(div)
-      /* no funciona  let botonesCarrito = document.querySelectorAll(".botonAgregarCarrito")
+       let botonesCarrito = document.querySelectorAll(".agregarCarrito")
     botonesCarrito.forEach(elemento =>{
       elemento.addEventListener("click",()=>{Swal.fire('Añadido al carrito')})
-    })*/
+    })
     }
 }
 
@@ -78,22 +78,31 @@ botonAgregarCarrito.forEach(elemento =>{
     elemento.addEventListener("click", agregarCarrito)
 })
 function agregarCarrito(e){
-    let carritoProductosLocalStorage=JSON.parse(localStorage.getItem("productosCarrito"))
+    let carritoProductosLocalStorage=JSON.parse(localStorage.getItem("productosCarrito"));
     if (carritoProductosLocalStorage){
-        carritoProductos=carritoProductosLocalStorage
+        carritoProductos=carritoProductosLocalStorage;
     }
+    let index=carritoProductos.findIndex(producto => producto.id == e.target.parentNode.parentNode.children[0].alt);
+    console.log(index)
     let nombre=e.target.parentNode.children[0].textContent;
     let precio=e.target.parentNode.children[1].children[0].textContent;
     let img=e.target.parentNode.parentNode.children[0].src;
     let id=e.target.parentNode.parentNode.children[0].alt;
-    let productoCarrito= new CarritoProductos(nombre,precio,img,id)
-    carritoProductos.push(productoCarrito)
+    console.log(id)
+    if (index == -1){
+    let productoCarrito= new CarritoProductos(nombre,precio,img,id);
+    carritoProductos.push(productoCarrito);
+    }else{
+        carritoProductos[index].cant++;
+    }
     localStorage.setItem("productosCarrito",JSON.stringify(carritoProductos))
     console.log(carritoProductos)
-
+    console.log(index)
+    console.log(e.target.parentNode.parentNode.children[0].alt)
 }
 
-/*let botonesCarrito = document.querySelectorAll(".botonAgregarCarrito")
+/*
+let botonesCarrito = document.querySelectorAll(".botonAgregarCarrito")
     botonesCarrito.forEach(elemento =>{
       elemento.addEventListener("click",()=>{ 
         const Toast = Swal.mixin({

@@ -32,6 +32,8 @@ class CarritoProductos{
 }
 
 function buscarPalabraClave() {
+  document.getElementById("miBoton").style.display = "block";
+  document.getElementById("palabraClave").style.display="block";
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML=``
   let palabraElegida = document.getElementById("palabraClave");
@@ -58,6 +60,8 @@ function buscarPalabraClave() {
 function buscarPorNombre() {
   let contenedorClave = document.getElementById("contenedorClave");
   contenedorClave.style.display = "block";
+  document.getElementById("miBoton").style.display = "block";
+  document.getElementById("palabraClave").style.display="block";
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML=``
   let tituloElegido = document.getElementById("palabraClave");
@@ -216,6 +220,20 @@ function botonRegistro (){
   document.getElementById("botonUsuarioNuevo").addEventListener("click",()=>{formularioNuevoIngreso()})
   document.getElementById("botonInicioSesion").addEventListener("click",()=>{formularioInicioSesion()})
 }
+function formularioNuevoIngreso(){
+  cajaInicioSesion = document.getElementById("divFormInicioSesion");
+  cajaInicioSesion.style.display="none";
+  cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
+  cajaRegistrarse.style.display="block";
+  document.getElementById("botonEnviarRegistro").addEventListener("click", ()=>{nuevoIngreso})
+}
+function formularioInicioSesion(){
+  cajaInicioSesion = document.getElementById("divFormInicioSesion");
+  cajaInicioSesion.style.display="block";
+  cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
+  cajaRegistrarse.style.display="none";
+  document.getElementById("botonInicioSesion").addEventListener("click", ()=>{inicioSesion})
+}
 
 /* En proceso------>
 let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
@@ -228,69 +246,6 @@ recetasFavoritas = [];
 function agregarFavoritos (e){
     console.log(e)
   };
-function nuevoIngreso(){
-  document.getElementById("cajaRegistro").innerHTML=``
-  let divNuevoIngreso = document.createElement("div");
-  divNuevoIngreso.innerHTML=`
-<div id="registrarse" >
-  <h1>Registrarse</h1>
-  <form action="#" method="post" class="formRegistro">
-    <div class="contenedor-input">
-      <label> Nombre <span class="req">*</span></label>
-      <input class="imputFormRegistro" type="text" required >
-    </div>
-
-    <div class="contenedor-input">
-      <label> Apellido <span class="req">*</span></label>
-      <input class="imputFormRegistro" type="text" required>
-    </div>
-    
-    <div class="contenedor-input">
-      <label>Usuario <span class="req">*</span></label>
-      <input class="imputFormRegistro" type="text" required>
-    </div>
-    <div class="contenedor-input">
-      <label> Email <span class="req">*</span></label>
-      <input class="imputFormRegistro" type="email" required> 
-    </div>
-    <div class="contenedor-input">
-      <label> Contraseña <span class="req">*</span></label>
-      <input class="imputFormRegistro" type="password" required>
-    </div>
-    <div class="contenedor-input">
-      <label> Repetir Contraseña <span class="req">*</span></label>
-      <input class="imputFormRegistro" type="password" required>
-    </div>
-    <input  type="submit" class="button button-block botonEnviarRegistro" value="Registrarse">
-  </form>
-</div>`
-document.getElementById("cajaRegistro").appendChild(divNuevoIngreso)
-}
-function inicioSesion(){
-  document.getElementById("cajaRegistro").innerHTML=``
-  let divInicioSesion = document.createElement("div");
-  divInicioSesion.innerHTML=`
-<div class="contenedor-formularios">
-  <div class="contenido-tab">
-    <div id="iniciar-sesion">
-      <h1>Iniciar Sesión</h1>
-      <form action="#" method="post" class="formRegistro">
-          <div class="contenedor-input">
-            <label>Usuario <span class="req">*</span></label>
-            <input class="imputFormRegistro" type="text" required>
-          </div>
-          <div class="contenedor-input">
-            <label> Contraseña <span class="req">*</span></label>
-            <input class="imputFormRegistro" type="password" required>
-          </div>
-          <p class="forgot"><a href="#">Se te olvidó la contraseña?</a></p>
-          <input type="submit" class="button button-block botonEnviarRegistro" value="Iniciar Sesión">
-      </form>
-    </div>
-  </div>
-</div>`
-document.getElementById("cajaRegistro").appendChild(divInicioSesion)
-}
 
 // favoritos modificado sin funcionar
 let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
@@ -334,15 +289,24 @@ function agregarFavoritos (e){
   localStorage.setItem("favoritas",JSON.stringify(recetasFavoritas))
   console.log(recetasFavoritas)
 };
+
+ if (pass === confirmPass) { Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Se ha registrado correctamente',
+    showConfirmButton: false,
+    timer: 1500})
+  }else{ Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Las contraseñas no coinciden. Vuelva a intentarlo',
+    showConfirmButton: false,
+    timer: 1500})
+  }
 */
 
-let arrayUsuarios = [];
 
-function formularioNuevoIngreso(){
-  cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
-  cajaRegistrarse.style.display="block";
-  document.getElementById("botonEnviarRegistro").addEventListener("click", ()=>{nuevoIngreso})
-}
+let arrayUsuarios = [];
 
 function nuevoIngreso() {
   
@@ -352,30 +316,15 @@ function nuevoIngreso() {
   let pass= document.getElementById(`inputPass`).value;
   let confirmPass= document.getElementById(`inputPassConfirm`).value;
   //alert ha ingresado distintas contraseñas
-  pass === confirmPass ? Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Se ha registrado correctamente',
-    showConfirmButton: false,
-    timer: 1500
-  }): Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Las contraseñas no coinciden. Vuelva a intentarlo',
-    showConfirmButton: false,
-    timer: 1500
-  })
-  arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
+  if(pass===confirmPass){
+    arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
   localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
-  console.log(arrayUsuarios)
+  console.log(arrayUsuarios)}
+  else{alert("algo salio mal")}
 }
 
 
-function formularioInicioSesion(){
-  cajaInicioSesion = document.getElementById("divFormInicioSesion");
-  cajaInicioSesion.classList.remove("noMostrar");
-  document.getElementById("botonInicioSesion").addEventListener("click", ()=>{inicioSesion})
-}
+
 function inicioSesion(){
   let email= document.getElementById(`inputEmail`).value;
   let pass= document.getElementById(`inputPass`).value;
