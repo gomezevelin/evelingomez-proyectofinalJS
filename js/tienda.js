@@ -78,9 +78,9 @@ botonAgregarCarrito.forEach(elemento =>{
     elemento.addEventListener("click", agregarCarrito)
 })
 function agregarCarrito(e){
-    let carritoProductosLocalStorage=JSON.parse(localStorage.getItem("productosCarrito"));
-    if (carritoProductosLocalStorage){
-        carritoProductos=carritoProductosLocalStorage;
+    //let carritoProductosLocalStorage=JSON.parse(localStorage.getItem("productosCarrito"));
+    if (localStorage.getItem("productosCarrito")){
+        carritoProductos=JSON.parse(localStorage.getItem("productosCarrito"));
     }
     let index=carritoProductos.findIndex(producto => producto.id == e.target.parentNode.parentNode.children[0].alt);
     console.log(index)
