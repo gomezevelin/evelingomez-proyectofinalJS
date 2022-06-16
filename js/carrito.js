@@ -8,7 +8,7 @@ function rellenarCarrito(productosTienda){
             <td>${producto.nombre}</td>
             <td>${producto.precio}</td>
             <td>${producto.cant}</td>
-            <td>$$</td>
+            <td>${producto.subtotal}</td>
             <td>Eliminar</td>
             `;
             tbodyCarrito.appendChild(trTbody)

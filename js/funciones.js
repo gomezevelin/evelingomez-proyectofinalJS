@@ -21,7 +21,7 @@ class Carrito{
 }
 
 class CarritoProductos{
-  constructor(nombre,precio,img,cant,id,subtotal){
+  constructor(nombre,precio,img,id,subtotal){
     this.nombre = nombre;
     this.precio = precio;
     this.img = img;
