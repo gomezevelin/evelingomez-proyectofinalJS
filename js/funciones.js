@@ -11,7 +11,7 @@ function Usuario(nom,apell,email,pass){
   this.email=email;
   this.pass=pass;
 }
-class Carrito{
+class Favoritos{
   constructor(titulo,preparacion,tiempoDemora,ingredientes){
     this.titulo = titulo.toUpperCase();  
     this.ingredientes = ingredientes;
@@ -103,7 +103,7 @@ function listarRecetas2(arr) {
   let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
   botonesFavoritos.forEach(elemento =>{
     elemento.addEventListener("click",()=>{ 
-      agregarFavoritos;
+      agregarFavoritos ();
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -119,27 +119,28 @@ function listarRecetas2(arr) {
       Toast.fire({
         icon: 'success',
         title: 'Se agregó a Favoritos'
-      })
+      });
+
     })
 });
 }
 
-let carrito = [];
+let favoritos = [];
 
 function agregarFavoritos (e){
-  let carritoLocalStorage= JSON.parse(localStorage.getItem("carrito"));
-  if (carritoLocalStorage){
-    carrito = carritoLocalStorage;
+  let favoritosLocalStorage= JSON.parse(localStorage.getItem("favoritos"));
+  if (favoritosLocalStorage){
+    favoritos = favoritosLocalStorage;
   }
   let tituloReceta= e.target.parentNode.children[0].textContent;
   let preparacionReceta= e.target.parentNode.children[1].textContent;
   let tiempoEstimado= e.target.parentNode.children[2].textContent;
   let ingredientes=e.target.parentNode.children[3].textContent;
   
-  let recetasFavoritas = new Carrito (tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
-  carrito.push(recetasFavoritas);
-  localStorage.setItem("carrito",JSON.stringify(carrito))
-  console.log(carrito)
+  let recetasFavoritas = new Favoritos (tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
+  favoritos.push(recetasFavoritas);
+  localStorage.setItem("favoritos",JSON.stringify(favoritos))
+  console.log(favoritos)
 };
 
 function formularioAgregarReceta() {
@@ -312,24 +313,27 @@ function nuevoIngreso() {
   
   let nombre = document.getElementById('inputNombre').value;
   let apellido = document.getElementById('inputApellido').value;
-  let email= document.getElementById(`inputEmail`).value;
-  let pass= document.getElementById(`inputPass`).value;
-  let confirmPass= document.getElementById(`inputPassConfirm`).value;
+  console.log(nombre,apellido)
+  //let email= document.getElementById(`inputEmail`).value;
+  //let pass= document.getElementById(`inputPass`).value;
+  //let confirmPass= document.getElementById(`inputPassConfirm`).value;
   //alert ha ingresado distintas contraseñas
-  if(pass===confirmPass){
+  //  arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
+  //localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
+  //console.log(arrayUsuarios)
+}
+/*  if(pass===confirmPass){
     arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
   localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
   console.log(arrayUsuarios)}
-  else{alert("algo salio mal")}
-}
-
+  else{alert("algo salio mal")}*/
 
 
 function inicioSesion(){
   let email= document.getElementById(`inputEmail`).value;
   let pass= document.getElementById(`inputPass`).value;
   arrayUsuarios.filter((elemento) => {
-    return elemento.email.toUpperCase().indexOf(email.value.toUpperCase()) != -1;
+    return elemento.email.indexOf(email.value.toUpperCase()) != -1;
   });}
 
 

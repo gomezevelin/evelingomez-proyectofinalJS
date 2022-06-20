@@ -62,3 +62,12 @@ let arrayRecetas = [
     },
   ];
   
+/*
+usuario/login
+no logro capturar los datos del for y subirlos al localstorage
+
+tienda/carrito
+no pude sumar la cantidad ni sacar el subtotal
+
+api
+no pude usar nada*/

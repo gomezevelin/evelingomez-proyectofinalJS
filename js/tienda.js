@@ -60,7 +60,7 @@ function rellenarTienda (){
             <img src="${producto.img}" class="card-img-top" alt="${producto.id}">
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text"><strong>$${producto.precio}</strong></p>
+                <p class="card-text">$<strong>${producto.precio}</strong></p>
                 <button class="btn btn-primary agregarCarrito" >Añadir al carrito</button>
             </div>
         </div>`
@@ -88,13 +88,15 @@ function agregarCarrito(e){
     let img=e.target.parentNode.parentNode.children[0].src;
     let id=e.target.parentNode.parentNode.children[0].alt;
     if (index == -1){
-    let productoCarrito= new CarritoProductos(nombre,precio,img,id);
+    let productoCarrito= new CarritoProductos(nombre,Number(precio),img,id);
     carritoProductos.push(productoCarrito);
     }else{
         carritoProductos[index].cant++;
         carritoProductos[index].subtotal = carritoProductos[index].precio*carritoProductos[index].cant
     }
     localStorage.setItem("productosCarrito",JSON.stringify(carritoProductos))
+    carritoNav(carritoProductos)
+    
 }
 
 /*
