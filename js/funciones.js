@@ -103,7 +103,8 @@ function listarRecetas2(arr) {
   let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos");
   botonesFavoritos.forEach(elemento =>{
     elemento.addEventListener("click",()=>{ 
-      agregarFavoritos ();
+      //no entiendo cual seria el e
+      agregarFavoritos (e);
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -132,6 +133,7 @@ function agregarFavoritos (e){
   if (favoritosLocalStorage){
     favoritos = favoritosLocalStorage;
   }
+  console.log(e)
   let tituloReceta= e.target.parentNode.children[0].textContent;
   let preparacionReceta= e.target.parentNode.children[1].textContent;
   let tiempoEstimado= e.target.parentNode.children[2].textContent;

@@ -1,12 +1,12 @@
+let resp=""
 async function llamadaFecth() {
 
   const call = await fetch("recetas.json")
 
-  const resp = await call.json();
+   resp = await call.json();
 
   console.log(resp);
 
-llamadaFecth();
 
   const botonPalabraClave = document.getElementById("botonConLoQueTengo");
   botonPalabraClave.addEventListener("click", () => {
@@ -28,7 +28,9 @@ llamadaFecth();
     verificarLocalStorage();
     listarRecetas2(resp);
   });
+}
 
   const login = document.getElementById("botonRegistrarse");
   login.addEventListener("click", () => { botonRegistro() });
-}
+  
+  llamadaFecth();
