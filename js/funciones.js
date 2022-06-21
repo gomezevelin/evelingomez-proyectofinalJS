@@ -1,3 +1,5 @@
+let recetas = []
+
 function Receta(titulo, ingredientes, preparacion, tiempoDemora,clave) {
     this.titulo = titulo.toUpperCase();  
     this.ingredientes = ingredientes;
@@ -125,7 +127,6 @@ function listarRecetas2(arr) {
     })
 });
 }
-
 let recetasfavoritas = [];
 
 function agregarFavoritos (e){
@@ -159,7 +160,7 @@ function rellenarRecetasFavoritas(arr){
       tBody.appendChild(trTbody);
   }
 };
-function formularioAgregarReceta() {
+function formularioAgregarReceta(arr) {
   let contenedorClave = document.getElementById("contenedorClave");
   contenedorClave.style.display = "none";
   const contenedorReceta = document.getElementById("miContenido");
@@ -195,7 +196,10 @@ function formularioAgregarReceta() {
     document.getElementById("agregarPalabra").addEventListener("click", ()=>{
       agregarPalabra()
     })
-    document.getElementById("botonFormularioAgregar").addEventListener ("click", agregarReceta)
+    
+    document.getElementById("botonFormularioAgregar").addEventListener ("click", ()=>{
+      agregarReceta(resp)
+    })
 };
 function agregarPalabra() {
     let cajaPalabraClave = document.getElementById("cajaPalabraClave");
@@ -204,17 +208,18 @@ function agregarPalabra() {
       agregarPalabra()
     })
 };
-function agregarReceta() {
-  
+
+function agregarReceta(resp) {
+  recetas=[]
+  recetas= verificarLocalStorage().concat(resp)
   let tituloRecetaNueva = document.getElementById("tituloReceta").value.toUpperCase();
   let preparacionReceta = document.getElementById("preparacionReceta").value;
   let ingredientes=document.getElementById("ingredientes").value;
   let tiempo=document.getElementById("tiempoDuracion").value;
   let palabrasClaves= agregarPalabraClave();
   recetas.push(new Receta(tituloRecetaNueva, ingredientes, preparacionReceta, tiempo, palabrasClaves));
-  localStorage.setItem("receta", JSON.stringify (recetas))
-  verificarLocalStorage()
-  listarRecetas2(resp)
+  localStorage.setItem("recetasAgregadas", JSON.stringify(recetas))
+  listarRecetas2(recetas)
 };
 function agregarPalabraClave () {
   let palabraClave = document.querySelectorAll(".palabrasClaves");
@@ -225,7 +230,7 @@ function agregarPalabraClave () {
   return arr
 };
 function verificarLocalStorage(){
-    recetas=JSON.parse(localStorage.getItem("receta")) || []
+    return JSON.parse(localStorage.getItem("recetasAgregadas")) || []
 };
 function botonRegistro (){
   document.getElementById("cajaRegistro").innerHTML=``
@@ -242,14 +247,14 @@ function formularioNuevoIngreso(){
   cajaInicioSesion.style.display="none";
   cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
   cajaRegistrarse.style.display="block";
-  document.getElementById("botonEnviarRegistro").addEventListener("click", ()=>{nuevoIngreso})
+  document.getElementById("botonEnviarRegistro").addEventListener("click", (e)=>{nuevoIngreso(e)})
 };
 function formularioInicioSesion(){
   cajaInicioSesion = document.getElementById("divFormInicioSesion");
   cajaInicioSesion.style.display="block";
   cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
   cajaRegistrarse.style.display="none";
-  document.getElementById("botonInicioSesion").addEventListener("click", ()=>{inicioSesion})
+  document.getElementById("botonInicioSesion").addEventListener("click", (e)=>{inicioSesion(e)})
 };
 
 /* En proceso------>
@@ -265,29 +270,33 @@ no pude usar nada*/
 
 let arrayUsuarios = [];
 
-function nuevoIngreso() {
-  
+function nuevoIngreso(e) {
+  e.preventDefault()
   let nombre = document.getElementById('inputNombre').value;
   let apellido = document.getElementById('inputApellido').value;
   console.log(nombre,apellido)
-  //let email= document.getElementById(`inputEmail`).value;
-  //let pass= document.getElementById(`inputPass`).value;
-  //let confirmPass= document.getElementById(`inputPassConfirm`).value;
-  //alert ha ingresado distintas contraseñas
-  //  arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
-  //localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
-  //console.log(arrayUsuarios)
-};
-/*  if(pass===confirmPass){
+  let email= document.getElementById(`inputEmail`).value;
+  let pass= document.getElementById(`inputPass`).value;
+  let confirmPass= document.getElementById(`inputPassConfirm`).value;
+  if(pass===confirmPass){
     arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
   localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
   console.log(arrayUsuarios)}
-  else{alert("algo salio mal")}*/
+  else{alert("algo salio mal")}
+};
 
 
-function inicioSesion(){
+
+function inicioSesion(e){
+  e.preventDefault()
   let email= document.getElementById(`inputEmail`).value;
   let pass= document.getElementById(`inputPass`).value;
-  arrayUsuarios.filter((elemento) => {
-    return elemento.email.indexOf(email.value.toUpperCase()) != -1;
-  });}
+  localStorageUsuarios= JSON.parse(localStorage.getItem("usuario"));
+  if (localStorageUsuarios){
+    arrayUsuarios=localStorageUsuarios
+  }
+  let usuario = arrayUsuarios.find((elemento) => {
+    return elemento.email === email && elemento.pass === pass
+  });
+console.log(usuario)
+}
