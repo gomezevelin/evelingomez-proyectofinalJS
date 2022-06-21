@@ -19,7 +19,6 @@ class Favoritos{
     this.tiempoDemora = tiempoDemora;
   }
 }
-
 class CarritoProductos{
   constructor(nombre,precio,img,id,subtotal){
     this.nombre = nombre;
@@ -30,7 +29,6 @@ class CarritoProductos{
     this.subtotal=precio;
   }
 }
-
 function buscarPalabraClave() {
   document.getElementById("miBoton").style.display = "block";
   document.getElementById("palabraClave").style.display="block";
@@ -42,7 +40,7 @@ function buscarPalabraClave() {
   let contenedorClave = document.getElementById("contenedorClave");
   contenedorClave.style.display = "block";
   boton.addEventListener("click", () => {
-    const arrayPalabrasClaves = arrayRecetas.filter((elemento) => {
+    const arrayPalabrasClaves = resp.filter((elemento) => {
       let boolean = false;
       let arr = [];
       elemento.clave.forEach((el) => {
@@ -59,32 +57,34 @@ function buscarPalabraClave() {
 }
 function buscarPorNombre() {
   let contenedorClave = document.getElementById("contenedorClave");
-  contenedorClave.style.display = "block";
-  document.getElementById("miBoton").style.display = "block";
-  document.getElementById("palabraClave").style.display="block";
+  mostrar(contenedorClave);
+  mostrar(document.getElementById("miBoton"));
+  mostrar(document.getElementById("palabraClave"));
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML=``
   let tituloElegido = document.getElementById("palabraClave");
   let boton = document.getElementById("miBoton");
   boton.innerText = `Buscar`;
-  
   boton.addEventListener("click", () => {
     ocultar(tituloElegido)
     ocultar(boton)
-    const arrayRecetasTitulo = arrayRecetas.filter((elemento) => {
+    const recetasTitulo = resp.filter((elemento) => {
       return elemento.titulo.toUpperCase().indexOf(tituloElegido.value.toUpperCase()) != -1;
     });
-    listarRecetas2(arrayRecetasTitulo); 
+    listarRecetas2(recetasTitulo); 
   }); 
 }
 function ocultar(elemento){
   elemento.style.display="none"
 }
+function mostrar(elemento){
+  elemento.style.display="block"
+}
 function listarRecetas2(arr) {
   let contenedorClave = document.getElementById("contenedorClave");
-  contenedorClave.style.display = "none";
+ ocultar(contenedorClave);
   const nombreReceta = document.getElementById("miContenido");
-  nombreReceta.innerHTML=``
+  nombreReceta.innerHTML=``;
   arr.forEach(({titulo,preparacion,tiempo,ingredientes}) => {
     let divReceta = document.createElement("div")
     divReceta.innerHTML = ` 
@@ -100,7 +100,7 @@ function listarRecetas2(arr) {
     nombreReceta.appendChild(divReceta);
   
   });
-  let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
+  let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos");
   botonesFavoritos.forEach(elemento =>{
     elemento.addEventListener("click",()=>{ 
       agregarFavoritos ();
@@ -125,7 +125,7 @@ function listarRecetas2(arr) {
 });
 }
 
-let favoritos = [];
+let recetasfavoritas = [];
 
 function agregarFavoritos (e){
   let favoritosLocalStorage= JSON.parse(localStorage.getItem("favoritos"));
@@ -141,8 +141,22 @@ function agregarFavoritos (e){
   favoritos.push(recetasFavoritas);
   localStorage.setItem("favoritos",JSON.stringify(favoritos))
   console.log(favoritos)
+  rellenarRecetasFavoritas(recetasFavoritas)
 };
-
+function rellenarRecetasFavoritas(arr){
+  
+  for (let receta of arr){
+      let tBody = document.getElementById("cuerpoTablaFavoritas")
+      let trTbody=document.createElement("tr");
+      trTbody.innerHTML= `
+      <td>${receta.titulo}</td>
+      <td>${receta.ingredientes}</td>
+      <td>${receta.tiempo}</td>
+      <td>${receta.preparacion}</td>
+      <td><button class="btn btn-danger eliminarProducto">Eliminar</button></td>`;
+      tBody.appendChild(trTbody);
+  }
+};
 function formularioAgregarReceta() {
   let contenedorClave = document.getElementById("contenedorClave");
   contenedorClave.style.display = "none";
@@ -180,14 +194,14 @@ function formularioAgregarReceta() {
       agregarPalabra()
     })
     document.getElementById("botonFormularioAgregar").addEventListener ("click", agregarReceta)
-}
+};
 function agregarPalabra() {
     let cajaPalabraClave = document.getElementById("cajaPalabraClave");
     cajaPalabraClave.innerHTML+= `<input type="text" class="form-control palabrasClaves"  placeholder="Ingrese un ingrediente por renglón">`
     document.getElementById("agregarPalabra").addEventListener("click", ()=>{
       agregarPalabra()
     })
-}
+};
 function agregarReceta() {
   
   let tituloRecetaNueva = document.getElementById("tituloReceta").value.toUpperCase();
@@ -195,11 +209,11 @@ function agregarReceta() {
   let ingredientes=document.getElementById("ingredientes").value;
   let tiempo=document.getElementById("tiempoDuracion").value;
   let palabrasClaves= agregarPalabraClave();
-  arrayRecetas.push(new Receta(tituloRecetaNueva, ingredientes, preparacionReceta, tiempo, palabrasClaves));
-  localStorage.setItem("receta", JSON.stringify (arrayRecetas))
+  recetas.push(new Receta(tituloRecetaNueva, ingredientes, preparacionReceta, tiempo, palabrasClaves));
+  localStorage.setItem("receta", JSON.stringify (recetas))
   verificarLocalStorage()
-  listarRecetas2(arrayRecetas)
-}
+  listarRecetas2(resp)
+};
 function agregarPalabraClave () {
   let palabraClave = document.querySelectorAll(".palabrasClaves");
   let arr=[];
@@ -207,10 +221,10 @@ function agregarPalabraClave () {
     arr.push(elemento.value)
   })
   return arr
-}
+};
 function verificarLocalStorage(){
-    arrayRecetas=JSON.parse(localStorage.getItem("receta")) || []
-}
+    recetas=JSON.parse(localStorage.getItem("receta")) || []
+};
 function botonRegistro (){
   document.getElementById("cajaRegistro").innerHTML=``
   let divRegistro = document.createElement("div")
@@ -220,92 +234,32 @@ function botonRegistro (){
   document.getElementById("cajaRegistro").appendChild(divRegistro)
   document.getElementById("botonUsuarioNuevo").addEventListener("click",()=>{formularioNuevoIngreso()})
   document.getElementById("botonInicioSesion").addEventListener("click",()=>{formularioInicioSesion()})
-}
+};
 function formularioNuevoIngreso(){
   cajaInicioSesion = document.getElementById("divFormInicioSesion");
   cajaInicioSesion.style.display="none";
   cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
   cajaRegistrarse.style.display="block";
   document.getElementById("botonEnviarRegistro").addEventListener("click", ()=>{nuevoIngreso})
-}
+};
 function formularioInicioSesion(){
   cajaInicioSesion = document.getElementById("divFormInicioSesion");
   cajaInicioSesion.style.display="block";
   cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
   cajaRegistrarse.style.display="none";
   document.getElementById("botonInicioSesion").addEventListener("click", ()=>{inicioSesion})
-}
-
-/* En proceso------>
-let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
-botonesFavoritos.forEach(elemento =>{
-    elemento.addEventListener("click", agregarFavoritos)
-});
-
-recetasFavoritas = [];
-
-function agregarFavoritos (e){
-    console.log(e)
-  };
-
-// favoritos modificado sin funcionar
-let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos")
-  botonesFavoritos.forEach(elemento =>{
-    elemento.addEventListener("click",()=>{ 
-      agregarFavoritos;
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
-      Toast.fire({
-        icon: 'success',
-        title: 'Se agregó a Favoritos'
-      })
-    })
-});
-}
-
-let recetasFavoritas = [];
-
-function agregarFavoritos (e){
-  let recetasFavoritasLocalStorage= JSON.parse(localStorage.getItem("favoritas"));
-  if (recetasFavoritasLocalStorage){
-    recetasFavoritas = recetasFavoritasLocalStorage;
-  }
-  let tituloReceta= e.target.parentNode.children[0].textContent;
-  let preparacionReceta= e.target.parentNode.children[1].textContent;
-  let tiempoEstimado= e.target.parentNode.children[2].textContent;
-  let ingredientes=e.target.parentNode.children[3].textContent;
-  
-  let recetaFavoritaNueva = new RecetaFavorita(tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
-  recetasFavoritas.push(recetaFavoritaNueva);
-  localStorage.setItem("favoritas",JSON.stringify(recetasFavoritas))
-  console.log(recetasFavoritas)
 };
 
- if (pass === confirmPass) { Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Se ha registrado correctamente',
-    showConfirmButton: false,
-    timer: 1500})
-  }else{ Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: 'Las contraseñas no coinciden. Vuelva a intentarlo',
-    showConfirmButton: false,
-    timer: 1500})
-  }
-*/
+/* En proceso------>
 
+usuario/login
+no logro capturar los datos del for y subirlos al localstorage
+
+tienda/carrito
+no pude sumar la cantidad ni sacar el subtotal
+
+api
+no pude usar nada*/
 
 let arrayUsuarios = [];
 
@@ -321,7 +275,7 @@ function nuevoIngreso() {
   //  arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
   //localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
   //console.log(arrayUsuarios)
-}
+};
 /*  if(pass===confirmPass){
     arrayUsuarios.push(new Usuario (nombre,apellido,email,pass));
   localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
@@ -335,7 +289,3 @@ function inicioSesion(){
   arrayUsuarios.filter((elemento) => {
     return elemento.email.indexOf(email.value.toUpperCase()) != -1;
   });}
-
-
-
-

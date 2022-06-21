@@ -1,25 +1,34 @@
-const botonPalabraClave = document.getElementById("botonConLoQueTengo");
-botonPalabraClave.addEventListener("click", () => {
-  buscarPalabraClave();
-});
+async function llamadaFecth() {
 
-const botonTitulo = document.getElementById("botonBuscarTitulo");
-botonTitulo.addEventListener("click", () => {
-  buscarPorNombre();
-});
+  const call = await fetch("recetas.json")
 
-const botonAgregarReceta = document.getElementById("botonAgregarReceta");
-botonAgregarReceta.addEventListener("click", () => {
-  formularioAgregarReceta()
-});
+  const resp = await call.json();
 
-const VerTodasRecetas = document.getElementById("botonVerTodas");
-VerTodasRecetas.addEventListener("click", () => {
-  verificarLocalStorage();
-  listarRecetas2(arrayRecetas);
-});
+  console.log(resp);
 
-const login = document.getElementById("botonRegistrarse");
-login.addEventListener("click",()=> {botonRegistro()});
+llamadaFecth();
 
+  const botonPalabraClave = document.getElementById("botonConLoQueTengo");
+  botonPalabraClave.addEventListener("click", () => {
+    buscarPalabraClave(resp);
+  });
 
+  const botonTitulo = document.getElementById("botonBuscarTitulo");
+  botonTitulo.addEventListener("click", () => {
+    buscarPorNombre(resp);
+  });
+
+  const botonAgregarReceta = document.getElementById("botonAgregarReceta");
+  botonAgregarReceta.addEventListener("click", () => {
+    formularioAgregarReceta()
+  });
+
+  const VerTodasRecetas = document.getElementById("botonVerTodas");
+  VerTodasRecetas.addEventListener("click", () => {
+    verificarLocalStorage();
+    listarRecetas2(resp);
+  });
+
+  const login = document.getElementById("botonRegistrarse");
+  login.addEventListener("click", () => { botonRegistro() });
+}
