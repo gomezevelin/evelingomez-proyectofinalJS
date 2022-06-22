@@ -20,14 +20,11 @@
                 <div>
                     <span class="navbar-brand mb-0 h2 "id="spanNav">Comiditas vegetarianas</span>
                 </div>
-                <div id="cajaRegistro">
-                    <button id="botonRegistrarse">Iniciar Sesión / Registrarse</button>
-                </div>
                 <div>
                     <a class="enlaceNav" href="./index.html">Home</a>
                     <a class="enlaceNav" href="./favoritos.html">Recetas Favoritas</a>
                     <a class="enlaceNav" href="./tienda.html">Tienda</a>
-                    <div>
+                    <div class="divEnlaceCarrito">
                         <a id="totalCarrito" class="enlaceNav" href="./carrito.html">Carrito</a>
                     </div>
                 </div>
@@ -36,19 +33,20 @@
         </div>
     </header>
     <main>
-        <table class="table table-danger text-center">
-            <thead>
-                <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Subtotal</th>
-                <th></th>
-                </tr>
-            </thead>
-            <tbody id="tbodyCarrito"></tbody>
-        </table>
-        
+            <div class="container">
+                <table class="table table-danger text-center" id="tableCarritoFav">
+                    <thead id="tituloTable">
+                        <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyCarrito"></tbody>
+                </table>
+            </div>
     </main>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
