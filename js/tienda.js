@@ -96,28 +96,6 @@ function agregarCarrito(e){
     }
     localStorage.setItem("productosCarrito",JSON.stringify(carritoProductos))
     carritoNav(carritoProductos)
-    
 }
 
-/*
-let botonesCarrito = document.querySelectorAll(".botonAgregarCarrito")
-    botonesCarrito.forEach(elemento =>{
-      elemento.addEventListener("click",()=>{ 
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
-        
-        Toast.fire({
-          icon: 'success',
-          title: 'Se agregó al carrito'
-        })
-      })
-  }); */
+//como hago para que carrito productos aparezca siempre

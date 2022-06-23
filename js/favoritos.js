@@ -8,7 +8,7 @@ function rellenarRecetasFavoritas() {
           <td>${receta.ingredientes}</td>
           <td>${receta.tiempoDemora} minutos</td>
           <td><button class="btn btn-success verMas">Ver más</button></td>
-          <td><button class="btn btn-danger eliminarProducto">Eliminar</button></td>`;
+          <td><button class="btn btn-danger eliminarFav">Eliminar</button></td>`;
       tBody.appendChild(trTbody);
     }
   }
@@ -18,8 +18,23 @@ function rellenarRecetasFavoritas() {
   
   document.querySelectorAll(".verMas").forEach(boton => {
     boton.addEventListener("click", verMas)
-  })
+  });
+  document.querySelectorAll(".eliminarFav").forEach(boton => {
+    boton.addEventListener("click", eliminarFavorita)
+  });
+  function eliminarFavorita(e){
+
+    let arr = JSON.parse(localStorage.getItem("favoritos"));
+    console.log(arr)
+    console.log(e.target.parentNode.parentNode.children[0].innerText)
+
+    let receta = arr.find(receta=>receta.titulo == e.target.parentNode.parentNode.children[0].innerText)
+    arr.splice(receta, 1)
+    e.target.parentNode.parentNode.remove()
+    localStorage.setItem("favoritos", JSON.stringify(arr))
+  }
   
+
   function verMas(e){
   
     let arr = JSON.parse(localStorage.getItem("favoritos")) || [];

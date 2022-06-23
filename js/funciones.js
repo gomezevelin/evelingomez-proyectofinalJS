@@ -92,7 +92,6 @@ function mostrar(elemento) {
 function listarRecetas2(arr) {
 
   let arrFavoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
   let contenedorClave = document.getElementById("contenedorClave");
   ocultar(contenedorClave);
   const nombreReceta = document.getElementById("miContenido");
@@ -102,8 +101,6 @@ function listarRecetas2(arr) {
     let encontrado = arrFavoritos.find(elemento => {
       return elemento.titulo.toUpperCase() == titulo.toUpperCase();
     })
-
-    console.log(encontrado)
 
     let msg;
     
@@ -126,11 +123,9 @@ function listarRecetas2(arr) {
     </div>`;
     nombreReceta.appendChild(divReceta);
   });
-  //hacerla funcionar y poner opcion de eliminar
   let botonesFavoritos = document.querySelectorAll(".botonAgregarFavoritos");
   botonesFavoritos.forEach((elemento) => {
     elemento.addEventListener("click", (e) => {
-      //no entiendo cual seria el e
       agregarFavoritos(e);
       const Toast = Swal.mixin({
         toast: true,
@@ -143,7 +138,6 @@ function listarRecetas2(arr) {
           toast.addEventListener("mouseleave", Swal.resumeTimer);
         },
       });
-
       Toast.fire({
         icon: "success",
         title: "Se agregó a Favoritos",
@@ -152,6 +146,9 @@ function listarRecetas2(arr) {
   });
 }
 function agregarFavoritos(e) {
+  console.log(e.target.parentNode)
+  botonFav=e.target;
+  botonFav.style.backgroundColor = "grey"
   let favoritosLocalStorage = JSON.parse(localStorage.getItem("favoritos"));
   if (favoritosLocalStorage) {
     favoritos = favoritosLocalStorage;
@@ -160,16 +157,10 @@ function agregarFavoritos(e) {
   let preparacionReceta = e.target.parentNode.children[1].textContent;
   let tiempoEstimado = e.target.parentNode.children[2].children[0].children[0].textContent;
   let ingredientes = e.target.parentNode.children[3].children[0].children[0].textContent;
-  let recetasFavoritas = new Favoritos(
-    tituloReceta,
-    preparacionReceta,
-    tiempoEstimado,
-    ingredientes
-  );
+  let recetasFavoritas = new Favoritos(tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
   favoritos.push(recetasFavoritas);
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }
-
 function formularioAgregarReceta(arr) {
   let contenedorClave = document.getElementById("contenedorClave");
   contenedorClave.style.display = "none";
@@ -285,7 +276,6 @@ function volverAtras() {
     .getElementById("botonRegistrarse")
     .addEventListener("click", botonRegistro);
 }
-
 function formularioNuevoIngreso() {
   cajaInicioSesion = document.getElementById("divFormInicioSesion");
   cajaInicioSesion.style.display = "none";
@@ -308,51 +298,3 @@ function formularioInicioSesion() {
       inicioSesion(e);
     });
 }
-
-/* En proceso------>
-
-usuario/login
-no logro capturar los datos del for y subirlos al localstorage
-*/
-
-let arrayUsuarios = [];
-
-function nuevoIngreso(e) {
-  e.preventDefault();
-  let nombre = document.getElementById("inputNombre").value;
-  let apellido = document.getElementById("inputApellido").value;
-  console.log(nombre, apellido);
-  let email = document.getElementById(`inputEmail`).value;
-  let pass = document.getElementById(`inputPass`).value;
-  let confirmPass = document.getElementById(`inputPassConfirm`).value;
-  if (pass === confirmPass) {
-    arrayUsuarios.push(new Usuario(nombre, apellido, email, pass));
-    localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
-    Swal.fire("Se ha registrado correctamente");
-    document.getElementById("formNuevoIngreso").reset();
-  } else {
-    alert("algo salio mal");
-  }
-}
-
-function inicioSesion(e) {
-  e.preventDefault();
-  let email = document.getElementById(`usuarioInicioSesion`).value;
-  let pass = document.getElementById(`passInicioSesion`).value;
-  localStorageUsuarios = JSON.parse(localStorage.getItem("usuario"));
-  if (localStorageUsuarios) {
-    arrayUsuarios = localStorageUsuarios;
-  }
-  let usuario = arrayUsuarios.find((elemento) => {
-    return elemento.email === email && elemento.pass === pass;
-  });
-  if (usuario) {
-    Swal.fire("Inicio sesión correctamente");
-  } else {
-    Swal.fire("Usuario no encontrado. Resgistrese");
-  }
-}
-/*let tituloReceta = e.target.parentNode.children[0].textContent;
-  let preparacionReceta = e.target.parentNode.children[1].textContent;
-  let tiempoEstimado = e.target.parentNode.children[2].children[0].children[0].textContent;
-  let ingredientes = e.target.parentNode.children[3].children[0].children[0].textContent; */
