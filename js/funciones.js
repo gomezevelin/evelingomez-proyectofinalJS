@@ -90,20 +90,38 @@ function mostrar(elemento) {
   elemento.style.display = "block";
 }
 function listarRecetas2(arr) {
+
+  let arrFavoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
   let contenedorClave = document.getElementById("contenedorClave");
   ocultar(contenedorClave);
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML = ``;
   arr.forEach(({ titulo, preparacion, tiempo, ingredientes }) => {
+
+    let encontrado = arrFavoritos.find(elemento => {
+      return elemento.titulo.toUpperCase() == titulo.toUpperCase();
+    })
+
+    console.log(encontrado)
+
+    let msg;
+    
+    if(encontrado){
+      msg =' <button class="botonAgregarFavoritos" id="sinUso"  disabled="true">Añadir a favoritos</button>'
+    }else{
+      msg =' <button class="botonAgregarFavoritos">Añadir a favoritos</button>'
+    }
+
     let divReceta = document.createElement("div");
     divReceta.innerHTML = ` 
     <div class="card" id="cardReceta">
       <div class="card-body">
           <h5 class="card-title" id="tituloReceta">${titulo.toUpperCase()}</h5>
           <p class="card-text pReceta">${preparacion}</p>
-          <p class="card-text"><small class="text-muted">Tiempo estimado: ${tiempo} minutos.</small></p>
-          <p class="card-text"><small class="text-muted">Ingredientes: ${ingredientes}</small></p>
-          <button class="botonAgregarFavoritos">Añadir a favoritos</button>
+          <p class="card-text"><small >Tiempo estimado: <span>${tiempo}</span></small></p>
+          <p class="card-text"><small >Ingredientes: <span>${ingredientes}</span></small></p>
+          ${msg}
       </div>
     </div>`;
     nombreReceta.appendChild(divReceta);
@@ -140,9 +158,8 @@ function agregarFavoritos(e) {
   }
   let tituloReceta = e.target.parentNode.children[0].textContent;
   let preparacionReceta = e.target.parentNode.children[1].textContent;
-  let tiempoEstimado = e.target.parentNode.children[2].textContent;
-  let ingredientes = e.target.parentNode.children[3].textContent;
-
+  let tiempoEstimado = e.target.parentNode.children[2].children[0].children[0].textContent;
+  let ingredientes = e.target.parentNode.children[3].children[0].children[0].textContent;
   let recetasFavoritas = new Favoritos(
     tituloReceta,
     preparacionReceta,
@@ -335,3 +352,7 @@ function inicioSesion(e) {
     Swal.fire("Usuario no encontrado. Resgistrese");
   }
 }
+/*let tituloReceta = e.target.parentNode.children[0].textContent;
+  let preparacionReceta = e.target.parentNode.children[1].textContent;
+  let tiempoEstimado = e.target.parentNode.children[2].children[0].children[0].textContent;
+  let ingredientes = e.target.parentNode.children[3].children[0].children[0].textContent; */
