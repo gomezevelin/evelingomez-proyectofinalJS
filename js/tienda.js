@@ -70,9 +70,12 @@ function rellenarTienda (){
       elemento.addEventListener("click",()=>{Swal.fire('Añadido al carrito')})
     })
     }
+    let productos=JSON.parse(localStorage.getItem("productosCarrito")) || []
+    carritoNav(productos)
 }
 
 rellenarTienda(arrayProductos)
+
 let botonAgregarCarrito= document.querySelectorAll(".agregarCarrito")
 botonAgregarCarrito.forEach(elemento =>{
     elemento.addEventListener("click", agregarCarrito)

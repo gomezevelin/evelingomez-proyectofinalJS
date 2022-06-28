@@ -238,6 +238,12 @@ border-radius: 10%;
     margin-left: auto;
     margin-right: auto;
 }
+.textoCarrito{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 1rem;
+    font-weight: 600;
+}
 @media (max-width: 768px) {
     #tituloPrincipal{
         font-size: 75px;

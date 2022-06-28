@@ -59,6 +59,124 @@
       "preparacion":"Colocamos las 10 cucharadas de avena en un bowl y el polvo para hornear, mezclamos. Luego le agregamos el huevo, el jugo de naranja, la esencia de vainilla, la ralladura, stevia (o lo que prefieras para endulzar), el aceite y revolvemos hasta integrar. Reservamos. Cortamos las manzanas en filas láminas. Colocamos un sartén al fuego bajo con un chorritode aceite. Una vez caliente le ponemos algo de azucar y cubrimos toda la base con manzanas. Arriba le tiramos la mezcla que teníamos reservada. Dejamos cocinar tapado durante 5/10 minutos más. Cuando este cocida la masa sin partes líquidas es que ya está lista para dar vuelta. Cocinar 10 minutos mas. Servir",
       "tiempo":30,
       "clave":["avena","huevo"]
+    },
+    {
+      "titulo":"Tortilla de papa",
+      "ingredientes":"1 kg de papas lavadas peladas y cortadas en cubos, 8 huevos y aceite para freír",
+      "preparacion": "Freír las papas en abundante aceite hasta que se vean doradas y bien cocidas. Retirar y escurrir sobre papel absorbente. Batir los huevos con sal y pimienta.Mezclar con las papas y colocar la mezcla en una sartén antiadherente. Cocinas de ambos lados. Retirar y servir",
+      "tiempo":30,
+      "clave" :["papa","huevo"]  
+    },
+    {
+      "titulo":"Tortitas de brócoli y papa",
+      "ingredientes":"3 cdas. de queso rallado, pan rallado, 1 brócoli, 2 papas grandes, 1 huevo",
+      "preparacion": "Hervir el brócoli y las papas. Colar y pisar groseramente. Añadir el huevo, queso rallado, nuez moscada, ajo deshidratado o fresco, sal y pimienta. Formar tortitas y pasar por pan rallado. Freír en aceite hasta dorar. Si prefieren se pueden rociar con aceite vegetal en aerosol y cocinar en el horno.",
+      "tiempo":20,
+      "clave" :["brócoli","papa"]  
+    },
+    {
+      "titulo":"Soufflé de zapallitos",
+      "ingredientes":"4 zapallitos, 1 cebolla, 1 cdita. de aceite, 4 huevos",
+      "preparacion": "Lavar y cortar los zapallitos. Rehogar la cebolla en aceite y cuando estén transparentes agregar los zapallitos, dejar cocinar (fuego lento) hasta que estén tiernos. Mezclarlos en un bol con los huevos batidos, el queso rallado, sal, pimienta y una pizquita de nuez moscada.Finalmente se vuelca en un molde enmantecado y se lleva a horno durante 25 min",
+      "tiempo":40,
+      "clave" :["zapallitos","huevo"]  
+    },
+    {
+      "titulo":"Budín de zanahoria",
+      "ingredientes":"4 zanahorias grandes, 3 huevos, 150 g de queso crema, 1 cdita. de curry, 1 cda. de azúcar mascabo y 2 tomates",
+      "preparacion": "Hervir las zanahorias hasta que estén bien tiernas y licuar. Agregar los huevos y el queso crema, y mezclar. Condimentar con el curry y pimienta. Poner el azúcar mascabo en la base de un molde alargado. Agregar el relleno y llevar al horno precalentado a temperatura media durante 40 minutos. Dejar enfriar, pasar un cuchillo por los bordes y desmoldar. Rallar los tomates y condimentar con pimienta, el orégano, el ajo, el azúcar y el aceite de oliva. Disponer la salsa sobre el budín",
+      "tiempo":60,
+      "clave" :["zanahoria","huevo"]  
+    },
+    {
+      "titulo":"Budín de calabaza",
+      "ingredientes":"800 g o 1 kilo de calabaza, 3 o 4 Cdas. de queso rallado, 2 huevo y 1 cda. de harina",
+      "preparacion": "Cortamos la calabaza en rodajas y además le sacamos la cáscara y la cocinamos al horno, hasta que quede blandita. Luego mezclamos la calabaza, el queso, los huevos, la sal, la pimienta y la harina (hay que lograr que la mezcla quede sin grumos). Luego, en una budinera forrada con papel aluminio (la cual debe estar aceitada apenas) vertemos la mezcla. Dejamos cocinar en el horno a una temperatura moderada por 30-40 minutos. (Al observar el budín durante su cocción nos daremos cuenta la consistencia soufflé que tiene).Retiramos y servimos.",
+      "tiempo":70,
+      "clave" :["calabaza","queso"]  
+    },
+    {
+      "titulo":"Tomates Rellenos",
+      "ingredientes":"150 g de queso crema, 1 cda. de mayonesa, 5 cdas. de aceite de oliva, 6 tomates medianos maduros y firmes, arroz hervido, aceitunas, 1 palta cubeteada, granos de choclo amarillo, cebolla morada cortada en cubos pequeños y perejil picado",
+      "preparacion": "Ahuecar los tomates cortando previamente la parte superior. Dejarlos algunos minutos boca abajo para que se escurran. En un bowl mezclar algo de la pulpa que retiramos de los tomate cortada en cubos pequeños, el arroz, las aceitunas, la palta cubeteada, el choclo, la cebolla y un poco de perejil picado fino. Agregar el queso crema, la mayonesa, el aceite y salpimentar a gusto. Con esta mezcla rellenar los tomates",
+      "tiempo":15,
+      "clave" :["tomates","arroz"]  
+    },
+    {
+      "titulo":"Palta Rellena",
+      "ingredientes":"palta, cebolla, tomate, queso crema y choclo",
+      "preparacion": "Ahuecá apenas las paltas. Picá la cebolla, el tomate, la palta; y mezclá todo con los granos de choclo. Salpimentalo. Colocá en cada palta una cucharada de queso crema y, por encima, el relleno",
+      "tiempo":15,
+      "clave" :["palta","queso"]  
+    },
+    {
+      "titulo":"Hamburguesa de Lentejas",
+      "ingredientes":"2 tazas de arroz yamaní cocido, 2 tazas de lentejas cocidas, 1/2 taza de cebollas caramelizadas,1/4 taza de hongos secos de pino molidos, 2 cdas. de semillas de chía, 1 huevo",
+      "preparacion": "Procesar el arroz con las lentejas y las cebollas. Agregar el resto de los ingredientes, mezclar bien, dar forma de hamburguesas y llevar al freezer. Cocinar en una sartén antiadherente con unas gotas de aceite de oliva. Aderezo de palta (3 paltas, Jugo de 1 limón, Ralladura de 1 limón, Pimienta, 1 cda. de cilantro picado, 50 g de queso crema): Pisar las paltas, condimentar con el resto de los ingredientes, agregar el queso crema y mezclar",
+      "tiempo":30,
+      "clave" :["arroz","lentejas"]  
+    },
+    {
+      "titulo":"Roll Vegetariano",
+      "ingredientes":"taza de leche, 2 huevos, 1 taza de harina, 1 taza de brócoli cocido, 3 cdas. de queso crema",
+      "preparacion": "Uní todos los ingredientes y con un míxer armá la preparación de la masa. Cociná la masa en una sartén previamente rociada con aceite. Una vez listos, untalos con queso crema y rellená con las verduras cortadas bien fina (Relleno: Rúcula c/n, Repollo colorado c/n, Zanahoria c/n, 200 g de queso crema). Enrollá, serví y disfrutá!",
+      "tiempo":15,
+      "clave" :["harina","huevo"]  
+    },
+    {
+      "titulo":"Buñuelos de acelga",
+      "ingredientes":"5 tazas de queso rallado, 3 cdas. de pan rallado, 800 g de acelga, 1 cebolla, 2 huevos",
+      "preparacion": "Cocinar la acelga y picarla bien pequeña. Saltear la cebolla y unirle la acelga, los huevos, el queso rallado y el pan rallado. En una placa de horno, apenas aceitada, vamos armando con una cuchara grande los buñuelos y colocando en la placa. Llevamos a horno moderado y dejamos que se doren un ratito de cada lado. Servimos",
+      "tiempo":15,
+      "clave" :["acelga","queso"]  
+    },
+    {
+      "titulo":"Papas Rellenas",
+      "ingredientes":"2 papas grandes, 100 g de queso crema, Pimienta, 2 cdas. de albahaca picada, 2 puerros, 1/2 diente de ajo,1 cdita. de aceite de oliva, 1 cdita. de miel, Jugo de 1/2 limón, 2 cdas. de queso parmesano rallado",
+      "preparacion": "Envolver las papas en papel de aluminio y cocinar en el horno hasta que estén blandas. Cortar a lo largo por la mitad, retirar el centro con cuidado para no romper la cáscara y preparar un puré. Agregar el queso crema, pimienta y la albahaca picada. Picar los puerros y el ajo. Calentar una sartén con el aceite de oliva, y saltearlos. Agregar el pescado cortado en trocitos, condimentar con pimienta y, cuando el salmón esté dorado, incorporar la miel y el jugo de limón. Rellenar las papas con esta preparación y colocar encima el puré. Espolvorear con el queso rallado y gratinar en el horno",
+      "tiempo":30,
+      "clave" :["papa","queso"]  
+    },
+    {
+      "titulo":"Tarta de verduras",
+      "ingredientes":"2 puerros, 1 brócoli, 1 atado de espinaca, 3 huevos, 3 cdas. de queso crema, 2 masas de tarta hojaldrada",
+      "preparacion": "Lavá bien las verduras.Cortá el brocoli y el puerro en trocitos, y cociná la espinaca en agua hervida. Escurrí y cortá o procesá hasta que tenga consistencia de puré. En una sartén con un poco de aceite, salteá los puerros y el brócoli hasta que estén dorados. Dejá enfriar. Mezclá los huevos con el queso crema. Condimentá con sal, pimienta, y nuez moscada. Poné la masa de la tarta en la tartera, abordarlo bien, y agrega los rellenos de verduras. Echá la mezcla de huevos y queso crema, y cubrí con otra tapa de masa de tarta. Pinchá un poco la superficie, podés hacerle formitas con la ayuda de un cortante, y cerrá bien los bordes. Pincelá con un poco de huevo extra la superficie. Cociná en horno precalentado a 180C durante aproximadamente 45 minutos",
+      "tiempo":70,
+      "clave" :["brocoli", "espinaca"]  
+    },
+    {
+      "titulo":"Ñoquis de remolacha",
+      "ingredientes":"2 remolachas, 1 papa mediana, 1 taza de harina, 1 huevo",
+      "preparacion": "Mezclá las remolachas y las papas ya cocidas haciendo un puré. Agregá la harina, el huevo y el queso crema. Salpimentá. Amasá y armá los ñoquis. Cocinalos en una olla con agua hirviendo y servilos con la salsa queso crema y hierbas",
+      "tiempo":30,
+      "clave" :["remolacha","papa"]  
+    },
+    {
+      "titulo":"Ñoquis de papa",
+      "ingredientes":"500g de harina, 2 huevos, 1kg de papa",
+      "preparacion": "Hervir las papas con cáscara. Cuando estén tiernas, retirar, pelar y hacer puré. Agregar los huevos; las cucharadas de queso; condimentar a gusto (Sal, pimienta y nuez moscada) e incorporar harina, formando una masa tierna. Sin amasar. Formar cilindros cortar; pasar por la tablita p/ñoquis o tenedor y cocinar en una olla con agua hirviendo. (cuando suben a la superficie, en segundos están listos)",
+      "tiempo":30,
+      "clave" :["papa","harina"]  
+    },
+    {
+      "titulo":"Bocados de papa y brócoli",
+      "ingredientes":"2 papas, 5 flores de brócoli, 2 cdas. de queso crema, 100 g de queso mozzarella, 2 huevos, pan rallado",
+      "preparacion": "Pelá y cortá las papas en cubos y ponelas en una ollita a hervir hasta que estén. Cuando están listas, hacer un puré. Herví unos minutos el brócoli, picalo y mezclalo con el puré de papas más dos cucharadas de bien abundantes de queso crema. Condimentá a gusto con sal y nuez moscada. Formá bolitas colocándoles en el centro un dadito de mozzarella. Pasalos por huevo y luego por pan rallado. Poné en una placa previamente aceitada y llevá al horno a 180º hasta que estén doradas y listo!!",
+      "tiempo":25,
+      "clave" :["papa","brocoli"]  
+    },
+    {
+      "titulo":"Polenta",
+      "ingredientes":"5 tazas tazas de agua, 1 cda. de manteca, 1 taza de polenta instantánea,100 g de queso crema, 300 cc de salsa de tomate filetto, 1 taza de queso parmesano rallado",
+      "preparacion": "Poner a hervir el agua junto a la manteca y sal. Incorporar la polenta en forma de lluvia y remover permanentemente hasta que espese. Una vez lista, agregar el queso crema y revolver unos minutos más. Retirar del fuego y servir en platos. Calentar la salsa de tomate y agregar por encima de la polenta. Espolvorear con el queso.Servir y disfrutar.",
+      "tiempo":15,
+      "clave" :["polenta","salsa"]  
+    },
+    {
+      "titulo":"Flan de Zanahoria",
+      "ingredientes":"80 g de pan rallado,cantidad necesaria de rocío vegetal,cantidad a gusto de lechuga, 250 g de queso en hebras, 70 g de queso crema, 500 g de zanahoria rallada",
+      "preparacion": "Primero lavamos, pelamos y rallamos grueso las zanahoria. La colocamos en un bol y le agregamos 250 gramos de queso en hebras, sal a gusto, el queso crema y el pan rallado. Mezclamos muy bien hasta que todo quede integrado. Rociamos unos moldes de budincitos o flancitos con rocío vegetal y colocamos la mezcla presionando un poco. Ponemos los moldes en una fuente grande que los contenga lo llevamos a horno medio por alrededor de 30 minutos. Retiramos del horno y dejamos reposar unos 15 minutos",
+      "tiempo":60,
+      "clave" :["zanahoria","queso"]  
     }
-  ]
- 
+]

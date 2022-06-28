@@ -1,61 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./tienda.html">
-    <link rel="stylesheet" href="./css/mistyle2.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./tienda.html" />
+    <link rel="stylesheet" href="./css/mistyle2.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    
+
     <title>Carrito</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="container">
-        <div class="row">
-            <nav class="navbar bg-danger border border-3" id="myNav">
-                <div>
-                    <span class="navbar-brand mb-0 h2 "id="spanNav">Comiditas vegetarianas</span>
-                </div>
-                <div>
-                    <a class="enlaceNav" href="./index.html">Home</a>
-                    <a class="enlaceNav" href="./favoritos.html">Recetas Favoritas</a>
-                    <a class="enlaceNav" href="./tienda.html">Tienda</a>
-                    <div class="divEnlaceCarrito">
-                        <a id="totalCarrito" class="enlaceNav" href="./carrito.html">Carrito</a>
-                    </div>
-                </div>
-                
-            </nav>
-        </div>
-    </header>
-    <main>
-            <div class="container">
-                <table class="table table-danger text-center" id="tableCarritoFav">
-                    <thead id="tituloTable">
-                        <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Subtotal</th>
-                        <th></th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbodyCarrito"></tbody>
-                </table>
+      <div class="row">
+        <nav class="navbar bg-danger border border-3" id="myNav">
+          <div>
+            <span class="navbar-brand mb-0 h2" id="spanNav"
+              >Comiditas vegetarianas</span
+            >
+          </div>
+          <div>
+            <a class="enlaceNav" href="./index.html">Home</a>
+            <a class="enlaceNav" href="./favoritos.html">Recetas Favoritas</a>
+            <a class="enlaceNav" href="./tienda.html">Tienda</a>
+            <div class="divEnlaceCarrito">
+              <a id="totalCarrito" class="enlaceNav" href="./carrito.html">Carrito</a>
             </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main id="mainCarrito">
+      <div id="divCarrito" class="container noMostrar">
+        <table class="table table-danger text-center" id="tableCarritoFav">
+          <thead id="tituloTable">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyCarrito"></tbody>
+        </table>
+      </div>
     </main>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/funciones.js"></script>
     <script src="./js/carrito.js"></script>
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity=
-    "sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-</body>
+  </body>
 </html>

@@ -1,5 +1,6 @@
 let recetas = [];
 let favoritos = [];
+let arrayUsuarios = [];
 
 function Receta(titulo, ingredientes, preparacion, tiempoDemora, clave) {
   this.titulo = titulo.toUpperCase();
@@ -33,17 +34,16 @@ class CarritoProductos {
   }
 }
 function buscarPalabraClave() {
-  document.getElementById("miBoton").style.display = "block";
-  document.getElementById("palabraClave").style.display = "block";
+  mostrar(document.getElementById("miBoton"));
+  mostrar(document.getElementById("palabraClave"));
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML = ``;
   let palabraElegida = document.getElementById("palabraClave");
   let boton = document.getElementById("miBoton");
   boton.innerText = `Buscar`;
   let contenedorClave = document.getElementById("contenedorClave");
-  contenedorClave.style.display = "block";
+  mostrar(contenedorClave);
   boton.addEventListener("click", () => {
-    //agregar que pasa si no existe la palabra
     const arrayPalabrasClaves = resp.filter((elemento) => {
       let boolean = false;
       let arr = [];
@@ -54,7 +54,11 @@ function buscarPalabraClave() {
       });
       return arr.includes(true) ? true : false;
     });
-    listarRecetas2(arrayPalabrasClaves);
+    if (arrayPalabrasClaves.length == 0) {
+      Swal.fire("No se encontraron coincidencias");
+    } else {
+      listarRecetas2(arrayPalabrasClaves);
+    }
     ocultar(palabraElegida);
     ocultar(boton);
   });
@@ -70,7 +74,6 @@ function buscarPorNombre() {
   let boton = document.getElementById("miBoton");
   boton.innerText = `Buscar`;
   boton.addEventListener("click", () => {
-    //agregar que passa si no existe la palabra
     ocultar(tituloElegido);
     ocultar(boton);
     const recetasTitulo = resp.filter((elemento) => {
@@ -80,7 +83,11 @@ function buscarPorNombre() {
           .indexOf(tituloElegido.value.toUpperCase()) != -1
       );
     });
-    listarRecetas2(recetasTitulo);
+    if (recetasTitulo.length == 0) {
+      Swal.fire("No se encontraron coincidencias");
+    } else {
+      listarRecetas2(recetasTitulo);
+    }
   });
 }
 function ocultar(elemento) {
@@ -90,24 +97,24 @@ function mostrar(elemento) {
   elemento.style.display = "block";
 }
 function listarRecetas2(arr) {
-
   let arrFavoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   let contenedorClave = document.getElementById("contenedorClave");
   ocultar(contenedorClave);
   const nombreReceta = document.getElementById("miContenido");
   nombreReceta.innerHTML = ``;
   arr.forEach(({ titulo, preparacion, tiempo, ingredientes }) => {
-
-    let encontrado = arrFavoritos.find(elemento => {
+    let encontrado = arrFavoritos.find((elemento) => {
       return elemento.titulo.toUpperCase() == titulo.toUpperCase();
-    })
+    });
 
     let msg;
-    
-    if(encontrado){
-      msg =' <button class="botonAgregarFavoritos" id="sinUso"  disabled="true">Añadir a favoritos</button>'
-    }else{
-      msg =' <button class="botonAgregarFavoritos">Añadir a favoritos</button>'
+
+    if (encontrado) {
+      msg =
+        ' <button class="botonAgregarFavoritos" id="sinUso"  disabled="true">Añadir a favoritos</button>';
+    } else {
+      msg =
+        ' <button id= "btnFav" class="botonAgregarFavoritos">Añadir a favoritos</button>';
     }
 
     let divReceta = document.createElement("div");
@@ -146,18 +153,25 @@ function listarRecetas2(arr) {
   });
 }
 function agregarFavoritos(e) {
-  console.log(e.target.parentNode)
-  botonFav=e.target;
-  botonFav.style.backgroundColor = "grey"
+  botonFav = e.target;
+  botonFav.style.backgroundColor = "grey";
+  botonFav.setAttribute("disabled", "true");
   let favoritosLocalStorage = JSON.parse(localStorage.getItem("favoritos"));
   if (favoritosLocalStorage) {
     favoritos = favoritosLocalStorage;
   }
   let tituloReceta = e.target.parentNode.children[0].textContent;
   let preparacionReceta = e.target.parentNode.children[1].textContent;
-  let tiempoEstimado = e.target.parentNode.children[2].children[0].children[0].textContent;
-  let ingredientes = e.target.parentNode.children[3].children[0].children[0].textContent;
-  let recetasFavoritas = new Favoritos(tituloReceta,preparacionReceta,tiempoEstimado,ingredientes);
+  let tiempoEstimado =
+    e.target.parentNode.children[2].children[0].children[0].textContent;
+  let ingredientes =
+    e.target.parentNode.children[3].children[0].children[0].textContent;
+  let recetasFavoritas = new Favoritos(
+    tituloReceta,
+    preparacionReceta,
+    tiempoEstimado,
+    ingredientes
+  );
   favoritos.push(recetasFavoritas);
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }
@@ -288,13 +302,50 @@ function formularioNuevoIngreso() {
     });
 }
 function formularioInicioSesion() {
-  cajaInicioSesion = document.getElementById("divFormInicioSesion");
-  cajaInicioSesion.style.display = "block";
-  cajaRegistrarse = document.getElementById("divFormNuevoIngreso");
-  cajaRegistrarse.style.display = "none";
+  mostrar(document.getElementById("divFormInicioSesion"));
+  ocultar(document.getElementById("divFormNuevoIngreso"));
   document
     .getElementById("formInicioSesion")
     .addEventListener("submit", (e) => {
       inicioSesion(e);
     });
+}
+function nuevoIngreso(e) {
+  e.preventDefault();
+  let nombre = document.getElementById("inputNombre").value;
+  let apellido = document.getElementById("inputApellido").value;
+  let email = document.getElementById(`inputEmail`).value;
+  let pass = document.getElementById(`inputPass`).value;
+  let confirmPass = document.getElementById(`inputPassConfirm`).value;
+  localStorageUsuarios = JSON.parse(localStorage.getItem("usuario"));
+  if (localStorageUsuarios) {
+    arrayUsuarios = localStorageUsuarios;
+  }
+  let encontrado = arrayUsuarios.find((usuario) => usuario.email === email);
+  if (pass === confirmPass && !encontrado) {
+    arrayUsuarios.push(new Usuario(nombre, apellido, email, pass));
+    localStorage.setItem("usuario", JSON.stringify(arrayUsuarios));
+    Swal.fire("Se ha registrado correctamente");
+    document.getElementById("formNuevoIngreso").reset();
+  } else {
+    Swal.fire("Algo salio mal, intentelo de nuevo");
+  }
+}
+function inicioSesion(e) {
+  e.preventDefault();
+  let email = document.getElementById(`usuarioInicioSesion`).value;
+  let pass = document.getElementById(`passInicioSesion`).value;
+  localStorageUsuarios = JSON.parse(localStorage.getItem("usuario"));
+  if (localStorageUsuarios) {
+    arrayUsuarios = localStorageUsuarios;
+  }
+  let usuario = arrayUsuarios.find((elemento) => {
+    return elemento.email === email && elemento.pass === pass;
+  });
+  if (usuario) {
+    Swal.fire("Inicio sesión correctamente");
+    document.getElementById("formInicioSesion").reset();
+  } else {
+    Swal.fire("Algo salió mal. Intente nuevamente");
+  }
 }
