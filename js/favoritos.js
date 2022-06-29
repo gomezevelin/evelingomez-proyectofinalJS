@@ -16,9 +16,7 @@ function rellenarRecetasFavoritas() {
           <td><button class="btn btn-danger eliminarFav">Eliminar</button></td>`;
       tBody.appendChild(trTbody);
     }
-  }else{
-    leyendaFav()
-  }
+  }else{leyendaFav()}
 }
 rellenarRecetasFavoritas();
 

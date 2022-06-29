@@ -100,5 +100,3 @@ function agregarCarrito(e){
     localStorage.setItem("productosCarrito",JSON.stringify(carritoProductos))
     carritoNav(carritoProductos)
 }
-
-//como hago para que carrito productos aparezca siempre

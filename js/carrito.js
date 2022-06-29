@@ -44,8 +44,7 @@ function eliminarProducto (e) {
     carritoNav(productosTienda)
     if(productosTienda.length==0){
         ocultar(tableCarrito);
-        leyendaCarrito()
-        
+        leyendaCarrito()   
     }
 }
 function leyendaCarrito (){
